@@ -1,5 +1,5 @@
 # This lab exercise is to provide administration of InnoDB Cluster
-## Remember to change all 'workshop8' in this README.md to your hostname
+## Remember to change all **workshop8** in this README.md to your hostname
 ##
 1. Showing cluster status with options
 2. Setting and showing cluster options
