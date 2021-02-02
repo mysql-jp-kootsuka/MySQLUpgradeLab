@@ -12,7 +12,6 @@
 
 ## Preparation
 ### Ensure there are no mysqld service running
-
 1. login as opc
 2. Stop the services
 ```
@@ -20,6 +19,26 @@ sudo systemctl stop mysqld@mysql01
 sudo systemctl stop mysqld@mysql02
 sudo systemctl stop mysqld@mysql03
 sudo systemctl stop mysqld
+```
+
+3. Check if any mysqld is running
+```
+ps -ef|grep mysqld
+```
+
+4. Change user to mysql
+```
+sudo su mysql
+```
+
+5. Using git to clone InnoDB Cluster environment (mysql as user)
+```
+cd  /home/mysql
+mkdir lab
+cd lab
+git clone https://github.com/ivanxma/InnoDBClusterLab
+cd InnoDBClusterLab
+```
 
 
 ## The exercise includes
