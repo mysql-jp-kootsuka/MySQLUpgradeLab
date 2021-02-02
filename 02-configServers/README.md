@@ -28,9 +28,9 @@ report-host=<your hostname>
 2. Startup mysql server
 
 ```
- /usr/local/mysql/bin/mysqld --defaults-file=config/my1.cnf &
- /usr/local/mysql/bin/mysqld --defaults-file=config/my2.cnf &
- /usr/local/mysql/bin/mysqld --defaults-file=config/my3.cnf &
+ /usr/local/mysql/bin/mysqld_safe --defaults-file=config/my1.cnf &
+ /usr/local/mysql/bin/mysqld_safe --defaults-file=config/my2.cnf &
+ /usr/local/mysql/bin/mysqld_safe --defaults-file=config/my3.cnf &
 ```
 
 3. Check if they are all running 
