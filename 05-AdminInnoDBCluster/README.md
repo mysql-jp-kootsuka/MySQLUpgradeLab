@@ -14,11 +14,13 @@ mysqlsh --uri gradmin:grpass@workshop8:3310
 ```
 
 # Showing cluster status with options
+..* Getting help info for a object function
 
 ```
 mysqlsh JS> var x = dba.getCluster()
 mysqlsh JS> x.status()
 mysqlsh JS> x.help('status')
+```
 
 ..* The "extended" option provides more details about the InnoDB Cluster.  Value can be 0,1,2 and 3.
 
