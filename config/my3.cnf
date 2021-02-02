@@ -6,3 +6,5 @@ mysqlx-port=33300
 socket=/home/mysql/data/3330/my.socks
 mysqlx-socket=/home/mysql/data/3330/myx.socks
 log-error=/home/mysql/data/3330/my.error
+
+server-id=3
