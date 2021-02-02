@@ -1,0 +1,8 @@
+[mysqld]
+datadir=/home/mysql/data/3320
+basedir=/usr/local/mysql
+port=3320
+mysqlx-port=33200
+socket=/home/mysql/data/3320/my.socks
+mysqlx-socket=/home/mysql/data/3320/myx.socks
+log-error=/home/mysql/data/3320/my.error
