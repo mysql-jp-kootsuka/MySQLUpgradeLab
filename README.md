@@ -2,13 +2,13 @@
 ## This is the Lab exercise about building InnoDB Cluster
 ##
 ## Environment 
-###	MySQL Home   : /usr/local/mysql
-###	MySQL Shell  : /usr/local/shell
-###	MySQL Router : /usr/local/router
+	MySQL Home   : /usr/local/mysql
+	MySQL Shell  : /usr/local/shell
+	MySQL Router : /usr/local/router
 ## Data
-###	3310 : /home/mysql/data/3310
-###	3320 : /home/mysql/data/3310
-###	3330 : /home/mysql/data/3310
+	3310 : /home/mysql/data/3310
+	3320 : /home/mysql/data/3310
+	3330 : /home/mysql/data/3310
 
 ## Preparation
 ### Ensure there are no mysqld service running
