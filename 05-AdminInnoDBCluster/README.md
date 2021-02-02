@@ -27,9 +27,10 @@ mysqlsh JS> x.help('status')
 mysqlsh JS> x.status({extended:1})
 mysqlsh JS> x.status({extended:2})
 mysqlsh JS> x.status({extended:3})
-``````
+```
 
 # Setting and showing cluster options
+..* setting the tags  (Change workshop8 to your hostname)
 ```
 mysqlsh JS> x.options()
 mysqlsh JS> x.setInstanceOption('workshop8:3330', 'tag:_hidden', 'true')
