@@ -44,26 +44,35 @@ dba.configureInstance('root:@localhost:3330',{clusterAdmin:'gradmin',clusterAdmi
 "
 ```
 
-Please note : you may see certain configurations not setup correctly and it requires fixes.  Follow the instruction.
+Please note : you may see certain configurations not setup correctly and it requires fixes.  Follow the instruction.  And type "Y" to apply configuration changes.
 
 ```
+Configuring local MySQL instance listening at port 3310 for use in an InnoDB cluster...
+
+This instance reports its own address as workshop8:3310
+Clients and other cluster members will communicate with it through this address by default. If this is not correct, the report_host MySQL system variable should be changed.
+Assuming full account name 'gradmin'@'%' for gradmin
+
 applierWorkerThreads will be set to the default value of 4.
 
 NOTE: Some configuration options need to be fixed:
-+----------------------------------------+---------------+----------------+--------------------------------------------------+
-| Variable                               | Current Value | Required Value | Note                                             |
-+----------------------------------------+---------------+----------------+--------------------------------------------------+
-| binlog_transaction_dependency_tracking | COMMIT_ORDER  | WRITESET       | Update the server variable                       |
-| server_id                              | 1             | <unique ID>    | Update read-only variable and restart the server |
-| slave_parallel_type                    | DATABASE      | LOGICAL_CLOCK  | Update the server variable                       |
-| slave_preserve_commit_order            | OFF           | ON             | Update the server variable                       |
-+----------------------------------------+---------------+----------------+--------------------------------------------------+
++----------------------------------------+---------------+----------------+----------------------------+
+| Variable                               | Current Value | Required Value | Note                       |
++----------------------------------------+---------------+----------------+----------------------------+
+| binlog_transaction_dependency_tracking | COMMIT_ORDER  | WRITESET       | Update the server variable |
+| slave_parallel_type                    | DATABASE      | LOGICAL_CLOCK  | Update the server variable |
+| slave_preserve_commit_order            | OFF           | ON             | Update the server variable |
++----------------------------------------+---------------+----------------+----------------------------+
+
+Do you want to perform the required configuration changes? [y/n]:
 ```
 
-6. Check 
+6. Check configuration if it is valid
 ```
 mysqlsh -e "
 dba.checkInstanceConfiguration('gradmin:grpass:@localhost:3310')
+dba.checkInstanceConfiguration('gradmin:grpass:@localhost:3320')
+dba.checkInstanceConfiguration('gradmin:grpass:@localhost:3330')
 "
 ```
 
