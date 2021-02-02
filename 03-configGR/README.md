@@ -76,3 +76,10 @@ dba.checkInstanceConfiguration('gradmin:grpass:@localhost:3330')
 "
 ```
 
+7. Check the GTID for all nodes.  At this point, the server(nodes) are all newly created and with command to create Admin User.  The GTID should all be empty.  That means ALL servers are the same with same data.   
+```
+ mysqlsh --uri gradmin:grpass@`hostname`:3310 --sql -e "select @@gtid_executed;"
+ mysqlsh --uri gradmin:grpass@`hostname`:3320 --sql -e "select @@gtid_executed;"
+ mysqlsh --uri gradmin:grpass@`hostname`:3330 --sql -e "select @@gtid_executed;"
+```
+

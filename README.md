@@ -47,10 +47,9 @@ cd InnoDBClusterLab
 
 1. Initialize 3 servers on the same VM
 2. Configuration for GTID
-3. Using MySQL Shell
-4. Configure Group Replication Admin User and settings 
-5. Creating InnoDB Cluster - 1 member
-6. Adding a member node to the InnoDB Cluster using Clone
+3. Using MySQL Shell and  Configure Group Replication Admin User & settings 
+4. Creating InnoDB Cluster - 1 member, and add 2nd node using Incremental, and add 3rd node usign Clone
+5. Administrate InnoDB Cluster
 7. Adding a member node to the InnoDB Cluster using Incremental Replication
 8. Checking InnoDB Cluster Status
 9. Bootstrap MySQL Router and Test running mysql client to the Router
