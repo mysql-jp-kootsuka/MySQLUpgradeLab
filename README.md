@@ -1,6 +1,6 @@
 # InnoDBClusterLab
 ## This is the Lab exercise about building InnoDB Cluster
-## The setup includes
+## The exercise includes
 
 1. Initialize 3 servers on the same VM
 2. Configuration for GTID
