@@ -125,7 +125,7 @@ mysqlsh --uri gradmin:grpass@workshop8:3310
 mysqlsh JS> var x = dba.getCluster()
 ```
 
-Getting error  message as shown :
+  * Getting error  message as shown :
 ```
 Dba.getCluster: This function is not available through a session to a standalone instance (metadata exists, instance belongs to that metadata, but GR is not active) (MYSQLSH 51314)
 ```
@@ -135,6 +135,9 @@ Dba.getCluster: This function is not available through a session to a standalone
 mysqlsh JS> dba.rebootClusterFromCompleteOutage()
 mysqlsh JS> var x = dba.getCluster()
 mysqlsh JS> x.status()
+```
+
+  * Same output as follows : 
 ```
 Restoring the default cluster from complete outage  .
 
