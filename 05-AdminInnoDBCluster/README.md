@@ -7,13 +7,13 @@
 4. Shutdown all server and reboot whole InnoDB Cluster
 
 
-# Login to InnoDB Cluster node with MySQL Shell
+## Login to InnoDB Cluster node with MySQL Shell
 ```
 mysqlsh --uri gradmin:grpass@workshop8:3310
 
 ```
 
-# Showing cluster status with options
+## Showing cluster status with options
   * Getting help info for a object function
 
 ```
@@ -30,7 +30,7 @@ mysqlsh JS> x.status({extended:2})
 mysqlsh JS> x.status({extended:3})
 ```
 
-# Setting and showing cluster options
+## Setting and showing cluster options
   * setting the tags  (Change workshop8 to your hostname)
 ```
 mysqlsh JS> x.options()
@@ -53,7 +53,7 @@ mysqlsh JS> x.options().defaultReplicaSet.tags
 ```
 
 
-# Shutdown MySQL Server and Restart individual Server
+## Shutdown MySQL Server and Restart individual Server
 
   * Shutdown node 3310 and check the status to see which server is to be Primary node (R/W)
 
@@ -91,7 +91,7 @@ mysqlsh JS> x.options().defaultReplicaSet.topology['workshop8:3320']
 
 ```
 
-# Shutdown all servers and reboot whole InnoDB Cluster
+## Shutdown all servers and reboot whole InnoDB Cluster
 
   * Shutdown all servers
 ```
