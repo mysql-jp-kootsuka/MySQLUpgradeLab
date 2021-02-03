@@ -46,7 +46,7 @@ x.setupRouterAccount('routeruser', {password:'routerpass'})
   * Bootstrap another Router config and port (--conf-base-port=7446, --https=port=9443  and --acount routeruser).  Enter routerpass as password for routeruser.  Redefining the ports as such there is no conflict to default ports to the started mysqlrouter
 
 ```
-cd ~/lab/InnoDBCluster/06-Router
+cd ~/lab/InnoDBClusterLab/06-Router
 mysqlrouter --conf-base-port=7446 --bootstrap gradmin:grpass@workshop8:3310 --https-port=9443 --account=routeruser --force --directory myrouter-acct
 
 ```
