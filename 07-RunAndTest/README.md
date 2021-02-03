@@ -1,6 +1,7 @@
 # Using MySQL InnoDB Cluster
 1. Create User on R/W node
 2. Running mysqlslap 
+3. Creating New Router using existing Router Account
 
 
 
@@ -14,7 +15,7 @@ grant all on *.* to demo@'%';
 ```
 
 ## Running mysqlslap
-  * mysqlslap is to allow concurrent loading to db.  Executing the following command applies 50 concurrent SELECT operation to the InnoDB Cluster on R/W node thru MySQL Router.
+  * mysqlslap is to allow concurrent loading to db.  Executing the following command applies 50 concurrent SELECT operations to the InnoDB Cluster on R/W node thru MySQL Router.
 ```
 mysqlslap -udemo -pdemo -h127.0.0.1 -P6446 --delimiter=";"  --create="CREATE TABLE a (b int not null primary key);INSERT INTO a VALUES (23)" --query="SELECT * FROM a" --concurrency=50 --iterations=200 &
 
