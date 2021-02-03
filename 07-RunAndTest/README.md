@@ -53,7 +53,7 @@ mysqlrouter --conf-base-port=7446 --bootstrap gradmin:grpass@workshop8:3310 --ht
 
   * Start up MySQL Router using 7446 port
 ```
-cd ~/lab/InnoDBCluster/06-Router/myrouter-acct
+cd ~/lab/InnoDBClusterLab/06-Router/myrouter-acct
 ./start.sh
 ```
 
