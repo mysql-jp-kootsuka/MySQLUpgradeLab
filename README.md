@@ -7,8 +7,8 @@
 	MySQL Router : /usr/local/router
 ## Data
 	3310 : /home/mysql/data/3310
-	3320 : /home/mysql/data/3310
-	3330 : /home/mysql/data/3310
+	3320 : /home/mysql/data/3320
+	3330 : /home/mysql/data/3330
 
 ## Preparation
 ### Ensure there are no mysqld service running
@@ -37,7 +37,7 @@ cd  /home/mysql
 mkdir lab
 cd lab
 git clone https://github.com/ivanxma/InnoDBClusterLab
-cd InnoDBClusterLab
+cd ~/lab/InnoDBClusterLab
 ```
 
 
