@@ -149,6 +149,7 @@ x.status()
 
 5. Adding node2 (3320) to the cluster using Incremental.   This is possible only because the server is clean where all servers were empty GTID.  Please change the hostname <workshop8> to your hostname accordingly
 
+```
 x = dba.getCluster()
 x.addInstance('gradmin:grpass@workshop8:3320', {exitStateAction:'OFFLINE_MODE',
         recoveryMethod:'incremental',
@@ -158,9 +159,11 @@ x.addInstance('gradmin:grpass@workshop8:3320', {exitStateAction:'OFFLINE_MODE',
         memberWeight:70
         })
 x.status()
+```
 
 
 6. Adding node3 (3330) to the cluster using CLONE (note : change hostname<workshop8> with your hostname
+```
 x = dba.getCluster()
 x.addInstance('gradmin:grpass@workshop8:3330', {exitStateAction:'OFFLINE_MODE', 
 	recoveryMethod:'clone', 
@@ -171,4 +174,5 @@ x.addInstance('gradmin:grpass@workshop8:3330', {exitStateAction:'OFFLINE_MODE',
 	})
 
 x.status()
+```
 
