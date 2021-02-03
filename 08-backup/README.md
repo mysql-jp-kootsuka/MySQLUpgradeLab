@@ -63,3 +63,50 @@ select * from mysql.backup_progress;
 show create table mysql.backup_history\G
 show create table mysql.backup_progress\G
 ```
+
+## Shutdown 3310 and clean up the data folder
+```
+mysql -uroot -h127.0.0.1 -P3310 -e "shutdown;"
+
+rm -rf ~/data/3310
+```
+
+## Identify the latest full backup folder with timestamp
+  * Switching to the backup folder
+```
+cd ~/lab/InnoDBClusterLab/08-backup
+ls -t1d 2021*|sed -n '1p'
+time mysqlbackup --defaults-file=../config/my1.cnf --backup-dir=`ls -t1d 2021*|sed -n '1p'` copy-back-and-apply-log
+```
+
+  * Switching to the restored 3310 data folder and Rename the backup cnf to get server_uuid and presisted variables restored.
+```
+cd ~/data/3310
+ls -l *.cnf
+mv backup-auto.cnf auto.cnf
+mv backup-mysqld-auto.cnf mysqld-auto.cnf
+```
+
+## Startup MySQL node (3310)
+  * Switching back to Lab folder
+```
+cd ~/lab/InnoDBClusterLab
+/usr/local/mysql/bin/mysqld_safe --defaults-file=config/my1.cnf &
+```
+
+
+## Using MySQL Shell to valid MySQL InnoDB Cluster status
+  * Login with MySQL Shell
+```
+mysqlsh --uri gradmin:grpass@workshop8:3320
+```
+
+  * Checking the InnoDB Cluster Status
+```
+var x = dba.getCluster()
+x.status()
+```
+
+
+
+
