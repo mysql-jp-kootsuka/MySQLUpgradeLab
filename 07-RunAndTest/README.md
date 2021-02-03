@@ -40,7 +40,7 @@ mysqlsh --uri gradmin:grpass@workshop8:3310
   * Create Router Account - routeruser / routerpass
 ```
 var x = dba.getCluster()
-etupRouterAccount('routeruser', {password:'routerpass'})
+x.setupRouterAccount('routeruser', {password:'routerpass'})
 ```
 
   * Bootstrap another Router config and port (--conf-base-port=7446, --https=port=9443  and --acount routeruser).  Enter routerpass as password for routeruser.  Redefining the ports as such there is no conflict to default ports to the started mysqlrouter
