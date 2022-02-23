@@ -1,17 +1,21 @@
 # InnoDBClusterLab
 ## This is the Lab exercise about building InnoDB Cluster
 ##
-## Environment 
+## Environment :  The provided VM instance has already installed with MySQL enterprise edition binary.
+### The /usr/local folder contains the binaries from corresponding tar packages.  
+### The soft links are built to standardize the paths to the corresponding tar folders.
 	MySQL Home   : /usr/local/mysql
 	MySQL Shell  : /usr/local/shell
 	MySQL Router : /usr/local/router
+
 ## Data
 	3310 : /home/mysql/data/3310
 	3320 : /home/mysql/data/3320
 	3330 : /home/mysql/data/3330
 
 ## Preparation
-### Ensure there are no mysqld service running
+### Ensure there are no mysqld service running.  By default with the provided VM instance, there are 4 active mysql services running.
+### Please login as opc and stop those services
 1. login as opc
 2. Stop the services
 ```
@@ -45,10 +49,10 @@ cd ~/lab/InnoDBClusterLab
 
 
 
-1. Initialize 3 servers on the same VM
+1. Initialization of 3 servers (3310,3320, 3330) on the same VM
 2. Configuration for GTID
-3. Using MySQL Shell and  Configure Group Replication Admin User & settings 
+3. Using MySQL Shell and  Configuring Group Replication Admin User & settings 
 4. Creating InnoDB Cluster - 1 member, and add 2nd node using Incremental, and add 3rd node usign Clone
-5. Administrate InnoDB Cluster
+5. Administrating InnoDB Cluster
 6. Bootstraping MySQL Router with InnoDB Cluster
 
