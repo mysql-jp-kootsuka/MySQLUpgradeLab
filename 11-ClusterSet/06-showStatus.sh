@@ -9,10 +9,11 @@ then
 		MYPORT=$2
 	fi
 else
-	MYHOST=$SECONDARY_HOST
+	MYHOST=`hostname`
 	MYPORT=3340
 fi
 
 mysqlsh --uri gradmin:grpass@${MYHOST}:${MYPORT} << EOL
+print(dba.getClusterSet().status());
 print(dba.getCluster().status());
 EOL

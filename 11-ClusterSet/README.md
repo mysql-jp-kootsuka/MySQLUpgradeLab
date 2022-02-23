@@ -63,6 +63,7 @@ print(x.status())
 ## Step 6
 ### Adding the 2 instances to the cluster "mycluster2"
 
+```
 mysqlsh --uri gradmin:grpass@`hostname`:3340 -e "
 x = dba.getCluster()
 x.addInstance('gradmin:grpass@`hostname`:3350', {exitStateAction:'OFFLINE_MODE', 
@@ -100,3 +101,22 @@ print(x.getCluster('mycluster').status())
 print(x.getCluster('mycluster2').status())
 "
 ```
+
+
+## Step 8
+### Switching Cluster from mycluster to mycluster2 and back.
+
+```
+mysqlsh --uri gradmin:grpass@`hostname`:3310 -e "
+x = dba.getClusterSet()
+print(x.status())
+
+x.setPrimaryCluster('mycluster2')
+print(x.status())
+x.setPrimaryCluster('mycluster')
+print(x.status())
+
+"
+```
+
+
