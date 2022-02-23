@@ -55,4 +55,5 @@ cd ~/lab/InnoDBClusterLab
 4. Creating InnoDB Cluster - 1 member, and add 2nd node using Incremental, and add 3rd node usign Clone
 5. Administrating InnoDB Cluster
 6. Bootstraping MySQL Router with InnoDB Cluster
+7. Creating another 3 servers (3340, 3350, 3360) and building clusterset to link mycluster and mycluster2(3340,3350,3360)
 
