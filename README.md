@@ -14,7 +14,7 @@
 	3330 : /home/mysql/data/3330
 
 ## Preparation
-### Ensure there are no mysqld service running.  By default with the provided VM instance, there are 4 active mysql services running.
+### Ensure there is no mysqld service running.  By default with the provided VM instance, there are 4 active mysql services running.
 ### Please login as opc and stop those services
 1. login as opc
 2. Stop the services
@@ -30,9 +30,9 @@ sudo systemctl stop mysqld
 ps -ef|grep mysqld
 ```
 
-4. Change user to mysql
+4. Switch user to mysql
 ```
-sudo su mysql
+sudo su - mysql
 ```
 
 5. Using git to clone InnoDB Cluster environment (mysql as user)
