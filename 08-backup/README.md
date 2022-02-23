@@ -103,7 +103,7 @@ cd ~/lab/InnoDBClusterLab
 ## Using MySQL Shell to valid MySQL InnoDB Cluster status
   * Login with MySQL Shell
 ```
-mysqlsh --uri gradmin:grpass@workshop8:3320
+mysqlsh --uri gradmin:grpass@`hostname`:3320
 ```
 
   * Checking the InnoDB Cluster Status

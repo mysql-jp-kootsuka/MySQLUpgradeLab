@@ -1,5 +1,5 @@
 # This lab exercise is to provide administration of InnoDB Cluster
-## Remember to change all **workshop8** in this README.md to your hostname
+## Remember to change all **##hostname##** in this README.md to your hostname
 ##
 1. Showing cluster status with options
 2. Setting and showing cluster options
@@ -9,7 +9,7 @@
 
 ## Login to InnoDB Cluster node with MySQL Shell
 ```
-mysqlsh --uri gradmin:grpass@workshop8:3310
+mysqlsh --uri gradmin:grpass@##hostname##:3310
 
 ```
 
@@ -31,19 +31,19 @@ mysqlsh JS> x.status({extended:3})
 ```
 
 ## Setting and showing cluster options
-  * setting the tags  (Change workshop8 to your hostname)
+  * setting the tags  (Change ##hostname## to your hostname)
 ```
 mysqlsh JS> x.options()
-mysqlsh JS> x.setInstanceOption('workshop8:3330', 'tag:_hidden', 'true')
+mysqlsh JS> x.setInstanceOption('##hostname##:3330', 'tag:_hidden', 'true')
 ```
 
-  * Showing the tags  (Change workshop8 to your hostname)
+  * Showing the tags  (Change ##hostname## to your hostname)
 ```
 mysqlsh JS> var theoptions = x.options()
 mysqlsh JS> theoptions.defaultReplicaSet.tags
-mysqlsh JS> theoptions.defaultReplicaSet.topology['workshop8:3310']
-mysqlsh JS> theoptions.defaultReplicaSet.topology['workshop8:3320']
-mysqlsh JS> theoptions.defaultReplicaSet.topology['workshop8:3330']
+mysqlsh JS> theoptions.defaultReplicaSet.topology['##hostname##:3310']
+mysqlsh JS> theoptions.defaultReplicaSet.topology['##hostname##:3320']
+mysqlsh JS> theoptions.defaultReplicaSet.topology['##hostname##:3330']
 ```
 
   * Combine the command in one line
@@ -63,7 +63,7 @@ mysql -uroot -h127.0.0.1 -P3310 -e "shutdown;"
 
   * Now Check the InnoDB Cluster status (using mysqlsh to login to available node)
 ```
-mysqlsh --uri gradmin:grpass@workshop8:3320 -e "print(dba.getCluster().status())"
+mysqlsh --uri gradmin:grpass@##hostname##:3320 -e "print(dba.getCluster().status())"
 ```
 
   * Startup MySQL node for 3310 
@@ -73,21 +73,21 @@ mysqlsh --uri gradmin:grpass@workshop8:3320 -e "print(dba.getCluster().status())
 
   * Now Check the InnoDB Cluster status - Check if node 3310 is ONLINE
 ```
-mysqlsh --uri gradmin:grpass@workshop8:3320 -e "print(dba.getCluster().status())"
+mysqlsh --uri gradmin:grpass@##hostname##:3320 -e "print(dba.getCluster().status())"
 ```
 
   * Login to node (any available node) using MySQL Shell and set Primary Node 
 ```
-mysqlsh --uri gradmin:grpass@workshop8:3320
+mysqlsh --uri gradmin:grpass@##hostname##:3320
 mysqlsh JS> var x = dba.getCluster()
-mysqlsh JS> x.setPrimaryInstance('workshop8:3310')
+mysqlsh JS> x.setPrimaryInstance('##hostname##:3310')
 mysqlsh JS> x.status()
 
 ```
   * Configure Applier threads to 3 for node 3320
 ```
-mysqlsh JS> dba.configureInstance("gradmin:grpass@workshop8:3320", {applierWorkerThreads: 3})
-mysqlsh JS> x.options().defaultReplicaSet.topology['workshop8:3320']
+mysqlsh JS> dba.configureInstance("gradmin:grpass@##hostname##:3320", {applierWorkerThreads: 3})
+mysqlsh JS> x.options().defaultReplicaSet.topology['##hostname##:3320']
 
 ```
 
@@ -117,7 +117,7 @@ Wait for a moment to make sure all servers are cleanly shutdown and exit.
 
   * Connect to available node using MySQL Shell
 ```
-mysqlsh --uri gradmin:grpass@workshop8:3310
+mysqlsh --uri gradmin:grpass@##hostname##:3310
 ```
 
   * Getting Cluster object fails and reports error
@@ -141,20 +141,20 @@ mysqlsh JS> x.status()
 ```
 Restoring the default cluster from complete outage  .
 
-The instance 'workshop8:3320' was part of the cluster configuration.
+The instance '##hostname##:3320' was part of the cluster configuration.
 Would you like to rejoin it to the cluster? [y/N]: y
 
-The instance 'workshop8:3330' was part of the cluster configuration.
+The instance '##hostname##:3330' was part of the cluster configuration.
 Would you like to rejoin it to the cluster? [y/N]: y
 
-workshop8:3310 was restored.
-Rejoining 'workshop8:3320' to the cluster.
-Rejoining instance 'workshop8:3320' to cluster 'mycluster'  .
-The instance 'workshop8:3320' was successfully rejoined to the cluster.
+##hostname##:3310 was restored.
+Rejoining '##hostname##:3320' to the cluster.
+Rejoining instance '##hostname##:3320' to cluster 'mycluster'  .
+The instance '##hostname##:3320' was successfully rejoined to the cluster.
 
-Rejoining 'workshop8:3330' to the cluster.
-Rejoining instance 'workshop8:3330' to cluster 'mycluster'  .
-The instance 'workshop8:3330' was successfully rejoined to the cluster.
+Rejoining '##hostname##:3330' to the cluster.
+Rejoining instance '##hostname##:3330' to cluster 'mycluster'  .
+The instance '##hostname##:3330' was successfully rejoined to the cluster.
 
 The cluster was successfully rebooted.
 

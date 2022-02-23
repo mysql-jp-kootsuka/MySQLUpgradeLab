@@ -49,7 +49,7 @@ Please note : you may see certain configurations not setup correctly and it requ
 ```
 Configuring local MySQL instance listening at port 3310 for use in an InnoDB cluster...
 
-This instance reports its own address as workshop8:3310
+This instance reports its own address as .....hostanme...:3310
 Clients and other cluster members will communicate with it through this address by default. If this is not correct, the report_host MySQL system variable should be changed.
 Assuming full account name 'gradmin'@'%' for gradmin
 

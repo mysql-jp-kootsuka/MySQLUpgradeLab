@@ -9,7 +9,7 @@
 
 ```
 cd ~/lab/InnoDBClusterLab/06-Router
-/usr/local/router/bin/mysqlrouter --bootstrap gradmin:grpass@workshop8:3310 --force --directory myrouter
+/usr/local/router/bin/mysqlrouter --bootstrap gradmin:grpass@`hostname`:3310 --force --directory myrouter
 ```
 
 

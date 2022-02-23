@@ -24,7 +24,7 @@ mysqlslap -udemo -pdemo -h127.0.0.1 -P6446 --delimiter=";"  --create="CREATE TAB
 ## Checking the processlist from mysqlsh
   * Login thru mysqlsh
 ```
-mysqlsh --uri gradmin:grpass@workshop8:3310
+mysqlsh --uri gradmin:grpass@`hostname`:3310
 ```
   * watching query "show processlist"
 ```
@@ -34,7 +34,7 @@ mysqlsh --uri gradmin:grpass@workshop8:3310
 ## Creating Router Account
   * Login thru mysqlsh
 ```
-mysqlsh --uri gradmin:grpass@workshop8:3310
+mysqlsh --uri gradmin:grpass@`hostname`:3310
 ```
 
   * Create Router Account - routeruser / routerpass
@@ -47,7 +47,7 @@ x.setupRouterAccount('routeruser', {password:'routerpass'})
 
 ```
 cd ~/lab/InnoDBClusterLab/06-Router
-mysqlrouter --conf-base-port=7446 --bootstrap gradmin:grpass@workshop8:3310 --https-port=9443 --account=routeruser --force --directory myrouter-acct
+mysqlrouter --conf-base-port=7446 --bootstrap gradmin:grpass@`hostname`:3310 --https-port=9443 --account=routeruser --force --directory myrouter-acct
 
 ```
 
