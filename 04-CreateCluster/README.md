@@ -15,7 +15,7 @@ x.options()
 
 The following is the sample output :
 ```
- MySQL  ##hostanme##:3310 ssl  JS > x.options()
+ MySQL  ##hostname##:3310 ssl  JS > x.options()
 {
     "clusterName": "mycluster",
     "defaultReplicaSet": {
@@ -37,10 +37,10 @@ The following is the sample output :
         ],
         "tags": {
             "global": [],
-            "##hostanme##:3310": []
+            "##hostname##:3310": []
         },
         "topology": {
-            "##hostanme##:3310": [
+            "##hostname##:3310": [
                 {
                     "option": "autoRejoinTries",
                     "value": "3",
@@ -78,7 +78,7 @@ The following is the sample output :
                 },
                 {
                     "option": "localAddress",
-                    "value": "##hostanme##:33101",
+                    "value": "##hostname##:33101",
                     "variable": "group_replication_local_address"
                 },
                 {
@@ -129,50 +129,56 @@ x.dissolve()
 ```
 
 
-4. Recreate the cluster again by defining option (please change the hostname ('##hostanme##') to your hostname accordingly)
+4. Recreate the cluster again by defining option (please change the hostname ('##hostname##') to your hostname accordingly)
 ```
-var x = dba.createCluster('mycluster' , 
-	{exitStateAction:'OFFLINE_MODE',
-        consistency:'BEFORE_ON_PRIMARY_FAILOVER',
-        expelTimeout:30,
-        memberSslMode:'REQUIRED',
-        ipAllowlist:'10.0.0.0/16',
-        clearReadOnly:true,
-        localAddress:'##hostanme##:13310',
-        autoRejoinTries:120,
-        memberWeight:80
+mysqlsh --uri gradmin:grpass@`hostname`:3310 -e " 
+var x = dba.createCluster('mycluster' ,  \
+	{exitStateAction:'OFFLINE_MODE',\
+        consistency:'BEFORE_ON_PRIMARY_FAILOVER',\
+        expelTimeout:30,\
+        memberSslMode:'REQUIRED',\
+        ipAllowlist:'10.0.0.0/16',\
+        clearReadOnly:true,\
+        localAddress:'`hostname`:13310',\
+        autoRejoinTries:120,\
+        memberWeight:80\
         })
-x.status()
+print(x.status())
+"
 
 ```
 
 
-5. Adding node2 (3320) to the cluster using Incremental.   This is possible only because the server is clean where all servers were empty GTID.  Please change the hostname <##hostanme##> to your hostname accordingly
+5. Adding node2 (3320) to the cluster using Incremental.   This is possible only because the server is clean where all servers were empty GTID.  Please change the hostname <##hostname##> to your hostname accordingly
 
 ```
+mysqlsh --uri gradmin:grpass@`hostname`:3310 -e " 
 x = dba.getCluster()
-x.addInstance('gradmin:grpass@##hostanme##:3320', {exitStateAction:'OFFLINE_MODE',
+x.addInstance('gradmin:grpass@`hostname`:3320', {exitStateAction:'OFFLINE_MODE',
         recoveryMethod:'incremental',
         ipAllowlist:'10.0.0.0/16',
-        localAddress:'##hostanme##:13320',
+        localAddress:'`hostname`:13320',
         autoRejoinTries:120,
         memberWeight:70
         })
-x.status()
+print(x.status())
+"
 ```
 
 
-6. Adding node3 (3330) to the cluster using CLONE (note : change hostname<##hostanme##> with your hostname
+6. Adding node3 (3330) to the cluster using CLONE (note : change hostname<##hostname##> with your hostname
 ```
+mysqlsh --uri gradmin:grpass@`hostname`:3310 -e " 
 x = dba.getCluster()
-x.addInstance('gradmin:grpass@##hostanme##:3330', {exitStateAction:'OFFLINE_MODE', 
+x.addInstance('gradmin:grpass@`hostname`:3330', {exitStateAction:'OFFLINE_MODE', 
 	recoveryMethod:'clone', 
 	ipAllowlist:'10.0.0.0/16',
-	localAddress:'##hostanme##:13330',
+	localAddress:'`hostname`:13330',
 	autoRejoinTries:120,
 	memberWeight:60
 	})
 
-x.status()
+print( x.status())
+"
 ```
 
