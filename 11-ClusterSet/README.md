@@ -97,8 +97,8 @@ print(x.status())
 mysqlsh --uri gradmin:grpass@`hostname`:3310 -e "
 x = dba.getClusterSet()
 print(x.status())
-print(x.getCluster('mycluster').status())
-print(x.getCluster('mycluster2').status())
+print(dba.getCluster('mycluster').status())
+print(dba.getCluster('mycluster2').status())
 "
 ```
 
