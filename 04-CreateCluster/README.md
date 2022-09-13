@@ -137,9 +137,7 @@ var x = dba.createCluster('mycluster' ,  \
         consistency:'BEFORE_ON_PRIMARY_FAILOVER',\
         expelTimeout:30,\
         memberSslMode:'REQUIRED',\
-        ipAllowlist:'10.0.0.0/16',\
         clearReadOnly:true,\
-        localAddress:'`hostname`:13310',\
         autoRejoinTries:120,\
         memberWeight:80\
         })
@@ -156,8 +154,6 @@ mysqlsh --uri gradmin:grpass@`hostname`:3310 -e "
 x = dba.getCluster()
 x.addInstance('gradmin:grpass@`hostname`:3320', {exitStateAction:'OFFLINE_MODE',
         recoveryMethod:'incremental',
-        ipAllowlist:'10.0.0.0/16',
-        localAddress:'`hostname`:13320',
         autoRejoinTries:120,
         memberWeight:70
         })
@@ -172,8 +168,6 @@ mysqlsh --uri gradmin:grpass@`hostname`:3310 -e "
 x = dba.getCluster()
 x.addInstance('gradmin:grpass@`hostname`:3330', {exitStateAction:'OFFLINE_MODE', 
 	recoveryMethod:'clone', 
-	ipAllowlist:'10.0.0.0/16',
-	localAddress:'`hostname`:13330',
 	autoRejoinTries:120,
 	memberWeight:60
 	})
