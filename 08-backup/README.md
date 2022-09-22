@@ -80,8 +80,12 @@ rm -rf ~/data/3310
   * Switching to the backup folder
 ```
 cd ~/lab/InnoDBClusterLab/08-backup
-ls -t1d 2021*|sed -n '1p'
-time mysqlbackup --defaults-file=../config/my1.cnf --backup-dir=`ls -t1d 2021*|sed -n '1p'` copy-back-and-apply-log
+```
+
+```
+MYYEAR=`date +'%Y'`
+ls -t1d ${MYYEAR}*|sed -n '1p'
+time mysqlbackup --defaults-file=../config/my1.cnf --backup-dir=`ls -t1d ${MYYEAR}*|sed -n '1p'` copy-back-and-apply-log
 ```
 
   * Switching to the restored 3310 data folder and Rename the backup cnf to get server_uuid and presisted variables restored.
