@@ -1,0 +1,5 @@
+mysql -ugradmin -pgrpass -h127.0.0.1 -P6447 -e " select @@hostname, @@port;"
+mysql -ugradmin -pgrpass -h127.0.0.1 -P6447 -e " select @@hostname, @@port;"
+mysql -ugradmin -pgrpass -h127.0.0.1 -P6447 -e " select @@hostname, @@port;"
+mysql -ugradmin -pgrpass -h127.0.0.1 -P6447 -e " select @@hostname, @@port;"
+mysql -ugradmin -pgrpass -h127.0.0.1 -P6447 -e " select @@hostname, @@port;"
