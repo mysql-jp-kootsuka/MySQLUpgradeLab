@@ -62,3 +62,43 @@ cd ~/lab/InnoDBClusterLab/06-Router/myrouter-acct
 mysql -udemo -pdemo -h127.0.0.1 -P7446 -e "select @@hostname, @@port;"
 ```
 
+  * Test with DEFAULT(6450) - 7450 split READ/WRITE port
+```
+mysql -udemo -pdemo -h127.0.0.1 -P7450 
+```
+
+  * Issue the following SQL
+```
+select @@port;
+select @@port for update;
+
+create database mydb;
+user mydb;
+create table mydb.myrwtable (f1 int not null primary key, f2 varchar(20));
+
+insert into mydb.myrwtable(1, @@port);
+insert into mydb.myrwtable(2, @@port);
+
+select myrwtable.*, @@port from mydb.myrwtable;
+select myrwtable.*, @@port from mydb.myrwtable for update;
+
+
+
+  * Transaction once is started, the session goes to PRIMARY
+```
+begin;
+select @@port;
+commit;
+
+select @@port;
+```
+
+  * Creating Temp table and the session will always be in PRIMARY
+
+```
+create temporary table mydb.mytmptable(f1 int not null primary key, f2 varchar(20));
+
+insert into mydb.mytmptable values (1, @@port);
+
+select @@port, mytmptable.* from mydb.mytmptable;
+```
