@@ -1,0 +1,1 @@
+mysqlslap -udemo -pdemo -h127.0.0.1 -P6446 --delimiter=";"  --create="CREATE TABLE a (b int not null primary key);INSERT INTO a VALUES (23)" --query="SELECT * FROM a" --concurrency=50 --iterations=200 &
