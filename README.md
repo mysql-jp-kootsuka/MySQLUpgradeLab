@@ -1,6 +1,8 @@
 # InnoDBClusterLab
 ## This is the Lab exercise about building InnoDB Cluster
 ##
+## Note : MySQL 8.4, where the default setting for consistency has changed and mysqlsh default mode is SQL (adding --js is required for JS processing)
+##
 ## Environment :  The provided VM instance has already installed with MySQL enterprise edition binary.
 ### The /usr/local folder contains the binaries from corresponding tar packages.  
 ### The soft links are built to standardize the paths to the corresponding tar folders.
@@ -56,4 +58,5 @@ cd ~/lab/InnoDBClusterLab
 5. Administrating InnoDB Cluster
 6. Bootstraping MySQL Router with InnoDB Cluster
 7. Creating another 3 servers (3340, 3350, 3360) and building clusterset to link mycluster and mycluster2(3340,3350,3360)
+
 
