@@ -2,7 +2,7 @@
 #
 1. connect to MySQL SHell
 ```
-mysqlsh --uri gradmin:grpass@`hostname`:3310 
+mysqlsh --js --uri gradmin:grpass@`hostname`:3310 
 
 ```
 
@@ -131,7 +131,7 @@ x.dissolve()
 
 4. Recreate the cluster again by defining option (please change the hostname ('##hostname##') to your hostname accordingly)
 ```
-mysqlsh --uri gradmin:grpass@`hostname`:3310 -e " 
+mysqlsh --js --uri gradmin:grpass@`hostname`:3310 -e " 
 var x = dba.createCluster('mycluster' ,  \
 	{exitStateAction:'OFFLINE_MODE',\
         consistency:'BEFORE_ON_PRIMARY_FAILOVER',\
@@ -150,7 +150,7 @@ print(x.status())
 5. Adding node2 (3320) to the cluster using Incremental.   This is possible only because the server is clean where all servers were empty GTID.  Please change the hostname <##hostname##> to your hostname accordingly
 
 ```
-mysqlsh --uri gradmin:grpass@`hostname`:3310 -e " 
+mysqlsh --js --uri gradmin:grpass@`hostname`:3310 -e " 
 x = dba.getCluster()
 x.addInstance('gradmin:grpass@`hostname`:3320', {exitStateAction:'OFFLINE_MODE',
         recoveryMethod:'incremental',
@@ -164,7 +164,7 @@ print(x.status())
 
 6. Adding node3 (3330) to the cluster using CLONE (note : change hostname<##hostname##> with your hostname
 ```
-mysqlsh --uri gradmin:grpass@`hostname`:3310 -e " 
+mysqlsh --js --uri gradmin:grpass@`hostname`:3310 -e " 
 x = dba.getCluster()
 x.addInstance('gradmin:grpass@`hostname`:3330', {exitStateAction:'OFFLINE_MODE', 
 	recoveryMethod:'clone', 

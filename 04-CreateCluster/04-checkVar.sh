@@ -1,4 +1,4 @@
-mysqlsh << EOL
+mysqlsh --js << EOL
 x = shell.connect("root:@127.0.0.1:3310");
 print("\n3310", x.runSql(" show variables like 'group_replication%consist%'").fetchAll());
 x.close();
