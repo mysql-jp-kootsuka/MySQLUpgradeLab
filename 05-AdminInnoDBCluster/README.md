@@ -9,7 +9,7 @@
 
 ## Login to InnoDB Cluster node with MySQL Shell
 ```
-mysqlsh --uri gradmin:grpass@##hostname##:3310
+mysqlsh --js --uri gradmin:grpass@##hostname##:3310
 
 ```
 
@@ -63,7 +63,7 @@ mysql -uroot -h127.0.0.1 -P3310 -e "shutdown;"
 
   * Now Check the InnoDB Cluster status (using mysqlsh to login to available node)
 ```
-mysqlsh --uri gradmin:grpass@##hostname##:3320 -e "print(dba.getCluster().status())"
+mysqlsh --js --uri gradmin:grpass@##hostname##:3320 -e "print(dba.getCluster().status())"
 ```
 
   * Startup MySQL node for 3310 
@@ -73,12 +73,12 @@ mysqlsh --uri gradmin:grpass@##hostname##:3320 -e "print(dba.getCluster().status
 
   * Now Check the InnoDB Cluster status - Check if node 3310 is ONLINE
 ```
-mysqlsh --uri gradmin:grpass@##hostname##:3320 -e "print(dba.getCluster().status())"
+mysqlsh --js --uri gradmin:grpass@##hostname##:3320 -e "print(dba.getCluster().status())"
 ```
 
   * Login to node (any available node) using MySQL Shell and set Primary Node 
 ```
-mysqlsh --uri gradmin:grpass@##hostname##:3320
+mysqlsh --js --uri gradmin:grpass@##hostname##:3320
 mysqlsh JS> var x = dba.getCluster()
 mysqlsh JS> x.setPrimaryInstance('##hostname##:3310')
 mysqlsh JS> x.status()
@@ -117,7 +117,7 @@ Wait for a moment to make sure all servers are cleanly shutdown and exit.
 
   * Connect to available node using MySQL Shell
 ```
-mysqlsh --uri gradmin:grpass@##hostname##:3310
+mysqlsh --js --uri gradmin:grpass@##hostname##:3310
 ```
 
   * Getting Cluster object fails and reports error
