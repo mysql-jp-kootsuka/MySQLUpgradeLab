@@ -1,4 +1,4 @@
-mysqlsh -e "
+mysqlsh --js -e "
 dba.checkInstanceConfiguration('gradmin:grpass:@localhost:3310')
 dba.checkInstanceConfiguration('gradmin:grpass:@localhost:3320')
 dba.checkInstanceConfiguration('gradmin:grpass:@localhost:3330')
