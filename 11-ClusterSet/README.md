@@ -21,7 +21,7 @@
 ## Step 3
 ### Configuring the 3 instances with cluster Admin User
 ```
-mysqlsh -e "
+mysqlsh --js -e "
 dba.configureInstance('root:@localhost:3340',{clusterAdmin:'gradmin',clusterAdminPassword:'grpass'});
 dba.configureInstance('root:@localhost:3350',{clusterAdmin:'gradmin',clusterAdminPassword:'grpass'});
 dba.configureInstance('root:@localhost:3360',{clusterAdmin:'gradmin',clusterAdminPassword:'grpass'});
@@ -31,7 +31,7 @@ dba.configureInstance('root:@localhost:3360',{clusterAdmin:'gradmin',clusterAdmi
 ## Step 4
 ###  Creating ClusterSet ('myclusterset') on existing running cluster 3310,3320,330
 ```
-mysqlsh --uri gradmin:grpass@`hostname`:3310 -e "
+mysqlsh --js --uri gradmin:grpass@`hostname`:3310 -e "
 
 x = dba.getCluster()
 x.createClusterSet('myclusterset')
@@ -42,7 +42,7 @@ x.createClusterSet('myclusterset')
 ### Creating Replicated Cluster from the clusterset "myclusterset"
 
 ```
-mysqlsh --uri gradmin:grpass@`hostname`:3310 -e "
+mysqlsh --js --uri gradmin:grpass@`hostname`:3310 -e "
 y = dba.getClusterSet()
 y.createReplicaCluster('`hostname`:3340', 'mycluster2', {
 	consistency:'BEFORE_ON_PRIMARY_FAILOVER',
@@ -62,7 +62,7 @@ print(x.status())
 ### Adding the 2 instances to the cluster "mycluster2"
 
 ```
-mysqlsh --uri gradmin:grpass@`hostname`:3340 -e "
+mysqlsh --js --uri gradmin:grpass@`hostname`:3340 -e "
 x = dba.getCluster()
 x.addInstance('gradmin:grpass@`hostname`:3350', {exitStateAction:'OFFLINE_MODE', 
 	recoveryMethod:'incremental', 
@@ -73,7 +73,7 @@ print(x.status())
 "
 
 
-mysqlsh --uri gradmin:grpass@`hostname`:3340 -e "
+mysqlsh --js --uri gradmin:grpass@`hostname`:3340 -e "
 x = dba.getCluster()
 x.addInstance('gradmin:grpass@`hostname`:3360', {exitStateAction:'OFFLINE_MODE', 
 	recoveryMethod:'incremental', 
@@ -88,7 +88,7 @@ print(x.status())
 ###  Checking status
 
 ```
-mysqlsh --uri gradmin:grpass@`hostname`:3310 -e "
+mysqlsh --js --uri gradmin:grpass@`hostname`:3310 -e "
 x = dba.getClusterSet()
 print(x.status())
 print(dba.getCluster('mycluster').status())
@@ -101,7 +101,7 @@ print(dba.getCluster('mycluster2').status())
 ### Switching Cluster from mycluster to mycluster2 and back.
 
 ```
-mysqlsh --uri gradmin:grpass@`hostname`:3310 -e "
+mysqlsh --js --uri gradmin:grpass@`hostname`:3310 -e "
 x = dba.getClusterSet()
 print(x.status())
 
