@@ -137,7 +137,6 @@ var x = dba.createCluster('mycluster' ,  \
         consistency:'BEFORE_ON_PRIMARY_FAILOVER',\
         expelTimeout:30,\
         memberSslMode:'REQUIRED',\
-        clearReadOnly:true,\
         autoRejoinTries:120,\
         memberWeight:80\
         })
