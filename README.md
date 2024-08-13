@@ -21,6 +21,22 @@
 	MySQL 8.4 :	3384 :	/home/opc/mysql/data/84
  	MySQL 9.0 : 	3390 : 	/home/opc/mysql/data/90
 
+
+```
+alias mysql57init='/home/opc/mysql/57/bin/mysqld --basedir=/home/opc/mysql/data/57 --initialize-insecure'
+alias mysql57start='/home/opc/mysql/57/bin/mysqld --basedir=/home/opc/mysql/data/57 --port=3357 --socket=/tmp/mysql57.sock &'
+alias mysql57stop='/home/opc/mysql/80sh/bin/mysqlsh root@127.0.0.1:3357 --sql -e"SHUTDOWN"'
+alias mysql80init='/home/opc/mysql/80/bin/mysqld --basedir=/home/opc/mysql/data/80 --initialize-insecure'
+alias mysql80start='/home/opc/mysql/80/bin/mysqld --basedir=/home/opc/mysql/data/80 --port=3380 --socket=/tmp/mysql80.sock &'
+alias mysql80stop='/home/opc/mysql/80sh/bin/mysqlsh root@127.0.0.1:3380 --sql -e"SHUTDOWN"'
+alias mysql84init='/home/opc/mysql/84/bin/mysqld --basedir=/home/opc/mysql/data/84 --initialize-insecure'
+alias mysql84start='/home/opc/mysql/84/bin/mysqld --basedir=/home/opc/mysql/data/84 --port=3384 --socket=/tmp/mysql84.sock &'
+alias mysql84stop='/home/opc/mysql/80sh/bin/mysqlsh root@127.0.0.1:3384 --sql -e"SHUTDOWN"'
+alias mysql90init='/home/opc/mysql/90/bin/mysqld --basedir=/home/opc/mysql/data/90 --initialize-insecure'
+alias mysql90start='/home/opc/mysql/90/bin/mysqld --basedir=/home/opc/mysql/data/90 --port=3390 --socket=/tmp/mysql90.sock &'
+alias mysql90stop='/home/opc/mysql/80sh/bin/mysqlsh root@127.0.0.1:3390 --sql -e"SHUTDOWN"'
+```
+
 ## Preparation
 ### Ensure there is no mysqld service running.  By default with the provided VM instance, there are 4 active mysql services running.
 ### Please login as opc and stop those services
