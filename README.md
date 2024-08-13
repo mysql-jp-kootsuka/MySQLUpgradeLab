@@ -44,6 +44,11 @@ util.dumpInstance("/home/opc/mysql/data/57dump");
 
 util.checkForServerUpgrade();
 
+mysql/80sh/bin/mysqlsh --sql root@localhost:3357 -e"SET GLOBAL enforce_gtid_consistency = ON;SET GLOBAL gtid_mode = OFF_PERMISSIVE;SET GLOBAL gtid_mode = ON_PERMISSIVE;SET GLOBAL gtid_mode = ON;"
+mysql/80sh/bin/mysqlsh --sql root@localhost:3380 -e"SET GLOBAL enforce_gtid_consistency = ON;SET GLOBAL gtid_mode = OFF_PERMISSIVE;SET GLOBAL gtid_mode = ON_PERMISSIVE;SET GLOBAL gtid_mode = ON;"
+mysql/80sh/bin/mysqlsh --sql root@localhost:3384 -e"SET GLOBAL enforce_gtid_consistency = ON;SET GLOBAL gtid_mode = OFF_PERMISSIVE;SET GLOBAL gtid_mode = ON_PERMISSIVE;SET GLOBAL gtid_mode = ON;"
+mysql/80sh/bin/mysqlsh --sql root@localhost:3390 -e"SET GLOBAL enforce_gtid_consistency = ON;SET GLOBAL gtid_mode = OFF_PERMISSIVE;SET GLOBAL gtid_mode = ON_PERMISSIVE;SET GLOBAL gtid_mode = ON;"
+
 SET GLOBAL local_infile=ON;
 util.loadDump("/home/opc/mysql/data/57dump", {ignoreVersion:true});
 
