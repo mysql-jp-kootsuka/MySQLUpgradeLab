@@ -1,5 +1,5 @@
-# InnoDBClusterLab
-## This is the Lab exercise about building InnoDB Cluster
+# MySQLUpgradeLab
+## This is the Lab exercise about upgrading MySQL from 5.7 to 8.4
 ##
 ## Note : MySQL 8.4, where the default setting for consistency has changed and mysqlsh default mode is SQL (adding --js is required for JS processing)
 ##
