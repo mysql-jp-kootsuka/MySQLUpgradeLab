@@ -1,14 +1,18 @@
 # MySQLUpgradeLab
-## This is the Lab exercise about upgrading MySQL from 5.7 to 8.4
+## これはMySQL 5.7から8.4までのアップグレードを経験するラボのページです。
+## This is the Lab exercise about upgrading MySQL from 5.7 to 8.4.
 ##
-## Note : MySQL 8.4, where the default setting for consistency has changed and mysqlsh default mode is SQL (adding --js is required for JS processing)
-##
-## Environment :  The provided VM instance has already installed with MySQL enterprise edition binary.
+## 環境 : 提供するVMインスタンスには、既にMySQL Server Enterprise Edition（5.7、8.0、8.4、9.0）と、Shell（8.0, 8.4, 9.0）のバイナリが含まれています。
+## Environment : The VM instance provided already includes MySQL Server Enterprise Edition (5.7, 8.0, 8.4, 9.0), and Shell (8.0, 8.4, 9.0) binaries.
+### /usr/localフォルダには、関連するtarパッケージに含まれるバイナリが配置されています。
 ### The /usr/local folder contains the binaries from corresponding tar packages.  
-### The soft links are built to standardize the paths to the corresponding tar folders.
-	MySQL Home   : /usr/local/mysql
-	MySQL Shell  : /usr/local/shell
-	MySQL Router : /usr/local/router
+	MySQL 5.7 Home   : /usr/local/mysql57
+	MySQL 8.0 Home   : /usr/local/mysql80
+	MySQL Shell 8.0  : /usr/local/mysql80shell
+ 	MySQL 8.4 Home   : /usr/local/mysql84
+	MySQL Shell 8.4  : /usr/local/mysql84shell
+ 	MySQL 8.4 Home   : /usr/local/mysql90
+	MySQL Shell 8.4  : /usr/local/mysql90shell
 
 ## Data
 	3310 : /home/mysql/data/3310
