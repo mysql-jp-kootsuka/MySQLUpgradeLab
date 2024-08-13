@@ -37,6 +37,18 @@ alias mysql90start='/home/opc/mysql/90/bin/mysqld --basedir=/home/opc/mysql/data
 alias mysql90stop='/home/opc/mysql/80sh/bin/mysqlsh root@127.0.0.1:3390 --sql -e"SHUTDOWN"'
 ```
 
+```
+mysql/80sh/bin/mysqlsh root@localhost:3357 --sql -e"source /home/opc/mysql/sql/world.sql"
+
+util.dumpInstance("/home/opc/mysql/data/57dump");
+
+util.checkForServerUpgrade();
+
+SET GLOBAL local_infile=ON;
+util.loadDump("/home/opc/mysql/data/57dump", {ignoreVersion:true});
+
+```
+
 ## Preparation
 ### Ensure there is no mysqld service running.  By default with the provided VM instance, there are 4 active mysql services running.
 ### Please login as opc and stop those services
