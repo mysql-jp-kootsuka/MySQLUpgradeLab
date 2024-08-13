@@ -6,18 +6,20 @@
 ## Environment : The VM instance provided already includes MySQL Server Enterprise Edition (5.7, 8.0, 8.4, 9.0), and Shell (8.0, 8.4, 9.0) binaries.
 ### /usr/localフォルダには、関連するtarパッケージに含まれるバイナリが配置されています。
 ### The /usr/local folder contains the binaries from corresponding tar packages.  
-	MySQL 5.7 Home   : /usr/local/mysql57
-	MySQL 8.0 Home   : /usr/local/mysql80
-	MySQL Shell 8.0  : /usr/local/mysql80shell
- 	MySQL 8.4 Home   : /usr/local/mysql84
-	MySQL Shell 8.4  : /usr/local/mysql84shell
- 	MySQL 8.4 Home   : /usr/local/mysql90
-	MySQL Shell 8.4  : /usr/local/mysql90shell
+	MySQL 5.7 Home   : /home/opc/mysql/57
+	MySQL 8.0 Home   : /home/opc/mysql/80
+	MySQL Shell 8.0  : /home/opc/mysql/80sh
+ 	MySQL 8.4 Home   : /home/opc/mysql/84
+	MySQL Shell 8.4  : /home/opc/mysql/84sh
+ 	MySQL 9.0 Home   : /home/opc/mysql/90
+	MySQL Shell 9.0  : /home/opc/mysql/90sh
 
-## Data
-	3310 : /home/mysql/data/3310
-	3320 : /home/mysql/data/3320
-	3330 : /home/mysql/data/3330
+## ポートとデータの場所
+## Port & data location
+	MySQL 5.7 :	3357 : 	/home/opc/mysql/data/57
+	MySQL 8.0 : 	3380 :	/home/opc/mysql/data/80
+	MySQL 8.4 :	3384 :	/home/opc/mysql/data/84
+ 	MySQL 9.0 : 	3390 : 	/home/opc/mysql/data/90
 
 ## Preparation
 ### Ensure there is no mysqld service running.  By default with the provided VM instance, there are 4 active mysql services running.
