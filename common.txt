@@ -1,0 +1,2 @@
+GIVEN_DIR=/home/kochi
+SSO_USERNAME=kohei.otsuka@oracle.com

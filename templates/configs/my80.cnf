@@ -1,0 +1,12 @@
+[mysqld]
+basedir=${MYSQL_DIR}/80
+datadir=${MYSQL_DIR}/data/80/data
+port=3380
+mysqlx-port=33800
+socket=/tmp/my80.sock
+mysqlx-socket=/tmp/my80x.socks
+log-error=${MYSQL_DIR}/data/80/my.error
+local_infile=on
+enforce_gtid_consistency=on
+gtid_mode=on
+server_id=80

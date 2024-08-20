@@ -1,0 +1,7 @@
+## my57.cnf
+[mysqld]
+basedir=${MYSQL_DIR}/57
+datadir=${MYSQL_DIR}/data/57/data
+port=3357
+socket=/tmp/my57.sock
+log-error=${MYSQL_DIR}/data/57/my.error

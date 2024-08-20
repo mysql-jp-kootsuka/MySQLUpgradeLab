@@ -1,0 +1,10 @@
+[mysqld]
+basedir=/mnt/c/Users/kochi/github/MySQLUpgradeLab/mysql/57
+datadir=/mnt/c/Users/kochi/github/MySQLUpgradeLab/mysql/data/57/data
+port=3357
+socket=/tmp/my57.sock
+log-error=/mnt/c/Users/kochi/github/MySQLUpgradeLab/mysql/data/57/my.error
+enforce_gtid_consistency=on
+gtid_mode=on
+log_bin=on
+server_id=57
