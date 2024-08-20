@@ -1,3 +1,0 @@
-cd myrouter
-./start.sh
-
