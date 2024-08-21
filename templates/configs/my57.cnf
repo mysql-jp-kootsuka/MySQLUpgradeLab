@@ -1,4 +1,3 @@
-## my57.cnf
 [mysqld]
 basedir=${MYSQL_DIR}/57
 datadir=${MYSQL_DIR}/data/57/data
