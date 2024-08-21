@@ -41,10 +41,11 @@ config_extract () {
   if [ ! -d $LOOP_TARGET_DIR ]; then
     mkdir $LOOP_TARGET_DIR
   fi
-  echo "############## $LOOP_TEMPLATE_FILE"
+  echo "Extract script $LOOP_TEMPLATE_FILE"
   while read line || [ -n "${line}" ]
   do
-    echo $(eval echo "''${line}")
+    echo ${line}
+    echo $(eval echo "\"${line}\"")
   done < $LOOP_TEMPLATE_FILE > $LOOP_TARGET_FILE
   [ `basename $LOOP_TARGET_FILE .sh` = `basename $LOOP_TARGET_FILE` ] || {
     chmod +x $LOOP_TARGET_FILE
@@ -68,26 +69,6 @@ config_traversal () {
 }
 
 config_traversal
-
-#config_extract "configs" "my57.cnf"
-#config_extract "configs" "my57_gtid.cnf"
-#config_extract "configs" "my80.cnf"
-#config_extract "configs" "my80_clone.cnf"
-#config_extract "configs" "my84.cnf"
-#config_extract "configs" "my90.cnf"
-#config_extract "scripts/01_init" "01_5.7_init.sh"
-#config_extract "scripts/01_init" "02_8.0_init.sh"
-#config_extract "scripts/01_init" "03_5.7_start.sh"
-#config_extract "scripts/01_init" "04_8.0_start.sh"
-#config_extract "scripts/01_init" "05_5.7_dbload.sh"
-
-#for pathfile in $TEMPLATE_DIR/*; do
-#  echo $pathfile
-#done
-
-#cp -r "$TEMPLATE_DIR/scripts" $SCRIPT_DIR
-
-#echo "MYSQL_DIR=${MYSQL_DIR}" > $SCRIPT_DIR/comm.sh
 
 mkdir $DATA_DIR/57
 mkdir $DATA_DIR/80
