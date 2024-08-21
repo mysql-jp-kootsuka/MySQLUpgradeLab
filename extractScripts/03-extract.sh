@@ -44,7 +44,6 @@ config_extract () {
   echo "Extract script $LOOP_TEMPLATE_FILE"
   while read line || [ -n "${line}" ]
   do
-    echo ${line}
     echo $(eval echo "\"${line}\"")
   done < $LOOP_TEMPLATE_FILE > $LOOP_TARGET_FILE
   [ `basename $LOOP_TARGET_FILE .sh` = `basename $LOOP_TARGET_FILE` ] || {

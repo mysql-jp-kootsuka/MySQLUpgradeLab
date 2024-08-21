@@ -1,3 +1,3 @@
 #!/bin/bash
 
-${MYSQL_DIR}/80/bin/mysqld --defaults-file=${MYSQL_DIR}/configs/my80_clone.cnf \\&
+${MYSQL_DIR}/80/bin/mysqld --defaults-file=${MYSQL_DIR}/configs/my80_clone.cnf &
