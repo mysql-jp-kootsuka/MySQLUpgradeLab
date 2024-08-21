@@ -50,17 +50,39 @@ config_extract () {
   }
 }
 
-config_extract "configs" "my57.cnf"
-config_extract "configs" "my57_gtid.cnf"
-config_extract "configs" "my80.cnf"
-config_extract "configs" "my80_clone.cnf"
-config_extract "configs" "my84.cnf"
-config_extract "configs" "my90.cnf"
-config_extract "scripts/01_init" "01_5.7_init.sh"
-config_extract "scripts/01_init" "02_8.0_init.sh"
-config_extract "scripts/01_init" "03_5.7_start.sh"
-config_extract "scripts/01_init" "04_8.0_start.sh"
-config_extract "scripts/01_init" "05_5.7_dbload.sh"
+config_traversal () {
+  LOOP_DIR="$1"
+  LOOP_PATH="$TEMPLATE_DIR"
+  if [ -n $LOOP_DIR ]; then
+    LOOP_PATH="$LOOP_PATH/$LOOP_DIR"
+  fi
+  for item in $LOOP_PATH/*; do
+    LOOP_ITEMBASE=`basename $item`
+    if [ -d $item ]; then
+      config_traversal "$1/$LOOP_ITEMBASE"
+    else
+      config_extract $1 $LOOP_ITEMBASE
+    fi
+  done
+}
+
+config_traversal
+
+#config_extract "configs" "my57.cnf"
+#config_extract "configs" "my57_gtid.cnf"
+#config_extract "configs" "my80.cnf"
+#config_extract "configs" "my80_clone.cnf"
+#config_extract "configs" "my84.cnf"
+#config_extract "configs" "my90.cnf"
+#config_extract "scripts/01_init" "01_5.7_init.sh"
+#config_extract "scripts/01_init" "02_8.0_init.sh"
+#config_extract "scripts/01_init" "03_5.7_start.sh"
+#config_extract "scripts/01_init" "04_8.0_start.sh"
+#config_extract "scripts/01_init" "05_5.7_dbload.sh"
+
+#for pathfile in $TEMPLATE_DIR/*; do
+#  echo $pathfile
+#done
 
 #cp -r "$TEMPLATE_DIR/scripts" $SCRIPT_DIR
 
