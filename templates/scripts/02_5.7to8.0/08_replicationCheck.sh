@@ -1,4 +1,4 @@
-. ./scripts/comm.sh
+#!/bin/bash
 
 ${MYSQL_DIR}/80sh/bin/mysqlsh root@localhost:3357 --sql -e"use world;INSERT INTO city VALUES (NULL, 'Tatebayashi', 'JPN', 'Gumma', 75440);"
 sleep 1
