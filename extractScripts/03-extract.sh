@@ -41,6 +41,7 @@ config_extract () {
   if [ ! -d $LOOP_TARGET_DIR ]; then
     mkdir $LOOP_TARGET_DIR
   fi
+  echo "############## $LOOP_TEMPLATE_FILE"
   while read line || [ -n "${line}" ]
   do
     echo $(eval echo "''${line}")
