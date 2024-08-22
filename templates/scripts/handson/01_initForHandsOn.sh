@@ -1,9 +1,9 @@
 . ./scripts/commons/functions.sh
 
 cat << STEP1_1
-# 手順1: MySQL Server アップグレードハンズオンの環境準備を行う
+# ハンズオン手順1: MySQL Server アップグレードハンズオンの環境準備を行う
 
-## 01-01: MySQL Server 5.7 の初期化を行います
+## 01-01: MySQL Server 5.7 の初期化と起動
 
 実行するスクリプト \`./scripts/57/initDB.sh\`:
 STEP1_1
@@ -47,7 +47,7 @@ extractFile "scripts/57/stopDB.sh"
 sleep 4
 
 cat << STEP1_5
-## 01-02: アップグレード先である、MySQL Server 8.0 の初期化と起動を行います
+## 01-02: アップグレード先である、MySQL Server 8.0 の初期化と起動
 
 実行するスクリプト \`./scripts/80/initDB.sh\`,\`./scripts/80/startDB.sh\`:
 STEP1_5

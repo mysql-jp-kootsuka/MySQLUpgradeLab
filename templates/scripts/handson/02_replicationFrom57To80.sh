@@ -1,9 +1,9 @@
 . ./scripts/commons/functions.sh
 
 cat << STEP2_1
-# 手順2: MySQL Server 5.7 から 8.0 への、データのダンプ/ロードとレプリケーションを通じたアップグレード
+# ハンズオン手順2: MySQL Server 5.7 から 8.0 への、データのダンプ/ロードとレプリケーションを通じたアップグレード
 
-## 02-01: MySQL Server 5.7 から 8.0 へのアップグレードの適合性をチェックします。
+## 02-01: MySQL Server 5.7 から 8.0 へのアップグレードの適合性をチェック
 
 MySQL Shell 8.0 を用いて、アップグレードチェッカーを実行します。
 
@@ -142,7 +142,9 @@ STEP2_10
 sleep 4
 
 cat << STEP2_11
-## 02-07: レプリケーションが最新の更新まで伝播すれば、アプリケーションの接続先を MySQL Server 5.7 から 8.0 に変更して、レプリケーションを終了できます。
+## 02-07: レプリケーション終了
+
+レプリケーションが最新の更新まで伝播すれば、アプリケーションの接続先を MySQL Server 5.7 から 8.0 に変更し、レプリケーションを終了できます。
 
 実行するスクリプト \`./scripts/80/stopRepl.sh\`, \`./scripts/80/resetRepl.sh\`:
 STEP2_11
@@ -158,16 +160,8 @@ runAndTrapError "scripts/80/resetRepl.sh"
 cat << STEP2_12
 以上で、MySQL Server 5.7 から 8.0 へのアップグレードが完了しました。
 
-MySQL 8.0 へは、\`./scripts/80/connectDB.sh\`で接続、\`./scripts/80/stopDB.sh\`で停止、\`./scripts/80/startDB.sh\`で起動できます。
-STEP2_12
-
-extractFile "scripts/80/connectDB.sh"
-extractFile "scripts/80/stopDB.sh"
-extractFile "scripts/80/startDB.sh"
-
-cat << STEP2_13
 次の手順は、\`./scripts/handson/03_replicationFrom80To84.sh\` です。
 MySQL Server 8.0 から 8.4 への、CLONEプラグインとインプレースアップグレードをテストします。
-STEP2_13
+STEP2_12
 
 exit 0
