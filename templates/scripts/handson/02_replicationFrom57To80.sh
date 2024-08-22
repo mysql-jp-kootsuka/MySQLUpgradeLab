@@ -104,7 +104,7 @@ sleep 4
 cat << STEP2_8
 ## 02-05: MySQL Server 8.0 で、MySQL Server 5.7 をソースとするレプリケーションの設定と開始
 
-MySQL Server 8.0 で MySQL Server 5.7 をソースとするレプリケーションを設定し、レプリケーションを開始します。
+MySQL Server 8.0 で MySQL Server 5.7 をソースとするレプリケーションを設定し、開始します。
 
 実行するスクリプト \`./scripts/80/setUpReplFrom57.sh\`,\`./scripts/80/startRepl.sh\`:
 STEP2_8
@@ -119,89 +119,55 @@ runAndTrapError "scripts/80/startRepl.sh"
 
 sleep 4
 
-cat << STEP2_8
+cat << STEP2_9
 ## 02-06: レプリケーションの完成をテスト
 
 以上でレプリケーションは完了しました。
+レプリケーションが動作しているか確認するため、MySQL Server 5.7 でデータを更新し、MySQL Server 8.0 に更新が伝播するかを確認します。
 
-MySQL Server 8.0 で MySQL Server 5.7 をソースとするレプリケーションを設定し、レプリケーションを開始します。
+実行するスクリプト \`./scripts/80/testReplFrom57.sh\`:
+STEP2_9
 
-実行するスクリプト \`./scripts/80/setUpReplFrom57.sh\`,\`./scripts/80/startRepl.sh\`:
-STEP2_8
-
-extractFile "scripts/80/setUpReplFrom57.sh"
-extractFile "scripts/80/startRepl.sh"
+extractFile "scripts/80/testReplFrom57.sh"
 
 waitRun
 
-runAndTrapError "scripts/80/setUpReplFrom57.sh"
-runAndTrapError "scripts/80/startRepl.sh"
+runAndTrapError "scripts/80/testReplFrom57.sh"
+
+cat << STEP2_10
+検索結果として \`Tatebayashi JPN Gumma 75440\` が表示されれば正常に動いています。
+
+STEP2_10
 
 sleep 4
 
+cat << STEP2_11
+## 02-07: レプリケーションが最新の更新まで伝播すれば、アプリケーションの接続先を MySQL Server 5.7 から 8.0 に変更して、レプリケーションを終了できます。
 
+実行するスクリプト \`./scripts/80/stopRepl.sh\`, \`./scripts/80/resetRepl.sh\`:
+STEP2_11
 
+extractFile "scripts/80/stopRepl.sh"
+extractFile "scripts/80/resetRepl.sh"
 
-: << COMMENT
+waitRun
 
-echo \\"02-02: MySQL Server 5.7 でGTID (グローバルトランザクション識別子) を有効化し、バイナリログを出力するよ
-うにします。\\"
-echo \\"GTIDがオンになっていると、レプリケーション設定時に、SOURCE_AUTO_POSITIONオプションでトランザクションの
-場所が自動指定できます。\\"
-echo \\"まず、現在のGTIDの設定 (enforce_gtid_consistency、gtid_mode) がオフであることを確認します。\\"
-echo \\"実行するスクリプト:\\"
-echo \\"=====\\"
-echo \\$COMMAND1
-echo \\"=====\\"
-echo \\"ENTER キーを押すと実行します:\\"
-echo
+runAndTrapError "scripts/80/stopRepl.sh"
+runAndTrapError "scripts/80/resetRepl.sh"
 
-read tmp
-eval \\$COMMAND1
-if [ $? -gt 0 ]; then
-  echo \\"エラーが発生しました、環境を確認してください。\\"
-  exit 1
-fi
+cat << STEP2_12
+以上で、MySQL Server 5.7 から 8.0 へのアップグレードが完了しました。
 
-echo \\"enforce_gtid_consistency、gtid_modeをオンにするために、設定ファイルを差し替えて再起動します。\\"
-echo \\"実行するスクリプト:\\"
-echo \\"=====\\"
-echo \\$COMMAND2
-echo \\"sleep 5\\"
-echo \\$COMMAND3
-echo \\"=====\\"
-echo
-echo \\"設定ファイルの内容: \\"
-echo \\"=====\\"
-cat \\$CONF
-echo \\"=====\\"
-echo
-echo \\"ENTER キーを押すと実行します:\\"
-echo
+MySQL 8.0 へは、\`./scripts/80/connectDB.sh\`で接続、\`./scripts/80/stopDB.sh\`で停止、\`./scripts/80/startDB.sh\`で起動できます。
+STEP2_12
 
-read tmp
-eval \\"\\$COMMAND2;sleep 5;\\$COMMAND3\\"
-if [ $? -gt 0 ]; then
-  echo \\"エラーが発生しました、環境を確認してください。\\"
-  exit 1
-fi
+extractFile "scripts/80/connectDB.sh"
+extractFile "scripts/80/stopDB.sh"
+extractFile "scripts/80/startDB.sh"
 
-echo \\"再起動したMySQL Server 5.7 でGTIDがオンになったのを確認します。\\"
-echo \\"実行するスクリプト:\\"
-echo \\"=====\\"
-echo \\$COMMAND1
-echo \\"=====\\"
-echo \\"ENTER キーを押すと実行します:\\"
-echo
+cat << STEP2_13
+次の手順は、\`./scripts/handson/03_replicationFrom80To84.sh\` です。
+MySQL Server 8.0 から 8.4 への、CLONEプラグインとインプレースアップグレードをテストします。
+STEP2_13
 
-read tmp
-eval \\$COMMAND1
-if [ $? -gt 0 ]; then
-  echo \\"エラーが発生しました、環境を確認してください。\\"
-  exit 1
-fi
-
-echo
-echo \\"MySQL Server 5.7 で GTID がオンになり、バイナリログが出力されるようになりました。\\"
-
-COMMENT
+exit 0
