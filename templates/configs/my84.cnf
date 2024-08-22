@@ -1,12 +1,13 @@
 [mysqld]
-basedir=${MYSQL_DIR}/84
-datadir=${MYSQL_DIR}/data/84/data
-port=3384
+basedir=${MYSQL_DIR}/84                 # 実行ファイルの存在するフォルダ
+datadir=${MYSQL_DIR}/data/84/data       # DBデータの格納されるフォルダ
+port=3384                               # サーバー待ち受けポート
 mysqlx-port=33840
 socket=/tmp/my84.sock
 mysqlx-socket=/tmp/my84x.socks
 log-error=${MYSQL_DIR}/data/84/my.error
-local_infile=on
-enforce_gtid_consistency=on
-gtid_mode=on
-server_id=84
+local_infile=on                         # loadDumpでローカルファイルシステムからの読み込みを許可する設定
+enforce_gtid_consistency=on             # GTID整合性に違反するトランザクションを禁止する設定
+gtid_mode=on                            # GTIDを用いる設定
+server_id=84                            # サーバーごとに一意なID
+# MySQL 8.0 以上ではバイナリログ出力がデフォルトのため、log_bin=on は不要
