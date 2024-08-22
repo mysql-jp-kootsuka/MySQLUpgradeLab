@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# MySQL Shell 8.0 を用いて、MySQL Server 5.7 から 8.0 へのアップグレードチェックを行う
+${MYSQL_DIR}/80sh/bin/mysqlsh root@localhost:3357 --js -e"util.checkForServerUpgrade();"
