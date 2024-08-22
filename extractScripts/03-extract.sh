@@ -4,6 +4,7 @@ TEMPLATE_DIR="$PROJECT_DIR/templates"
 CONFIG_DIR="$MYSQL_DIR/configs"
 SCRIPT_DIR="$MYSQL_DIR/scripts"
 DATA_DIR="$MYSQL_DIR/data"
+DUMP_DIR="$MYSQL_DIR/dump"
 
 if [ -d $CONFIG_DIR ]; then
   if [ -n "$(ls -A $CONFIG_DIR)" ]; then
@@ -29,10 +30,22 @@ if [ -d $DATA_DIR ]; then
   rm -r $DATA_DIR
 fi
 
+if [ -d $DUMP_DIR ]; then
+  if [ -n "$(ls -A $DUMP_DIR)" ]; then
+    echo "File existed in '$DUMP_DIR' please check and remove them first."
+    exit 1
+  fi
+  rm -r $DUMP_DIR
+fi
+
 mkdir $CONFIG_DIR
+echo "Directory ($CONFIG_DIR) is created."
 mkdir $SCRIPT_DIR
+echo "Directory ($SCRIPT_DIR) is created."
 mkdir $DATA_DIR
-echo "Directories ($CONFIG_DIR, $SCRIPT_DIR, $DATA_DIR) are created."
+echo "Directory ($DATA_DIR) is created."
+mkdir $DUMP_DIR
+echo "Directory ($DUMP_DIR) is created."
 
 config_extract () {
   LOOP_TEMPLATE_FILE="$TEMPLATE_DIR/$1/$2"
@@ -42,10 +55,7 @@ config_extract () {
     mkdir $LOOP_TARGET_DIR
   fi
   echo "Extract script $LOOP_TEMPLATE_FILE"
-  while read line || [ -n "${line}" ]
-  do
-    echo $(eval echo "\"${line}\"")
-  done < $LOOP_TEMPLATE_FILE > $LOOP_TARGET_FILE
+  export MYSQL_DIR="$MYSQL_DIR";cat $LOOP_TEMPLATE_FILE | envsubst '$MYSQL_DIR' > $LOOP_TARGET_FILE
   [ `basename $LOOP_TARGET_FILE .sh` = `basename $LOOP_TARGET_FILE` ] || {
     chmod +x $LOOP_TARGET_FILE
   }
