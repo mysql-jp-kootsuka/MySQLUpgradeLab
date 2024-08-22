@@ -2,7 +2,8 @@
 
 ## 02-01: MySQL Server 5.7 から 8.0 へのアップグレードの適合性をチェック
 
-MySQL Shell 8.0 を用いて、アップグレードチェッカーを実行します。
+MySQL Shell 8.0 を用いて、アップグレードチェッカーを実行します。  
+(アップグレードチェッカーに関する情報は[こちら](https://dev.mysql.com/doc/mysql-shell/8.4/en/mysql-shell-utilities-upgrade.html))
 
 実行するスクリプト `./scripts/57/checkUpgradeTo80.sh`:
 
