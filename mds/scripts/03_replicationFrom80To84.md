@@ -105,17 +105,18 @@ MySQL 設定ファイルの内容 `./configs/my84.cnf`:
 * my84.cnf
 ```
 [mysqld]
-basedir=/home/opc/mysql/84
-datadir=/home/opc/mysql/data/84/data
-port=3384
+basedir=/home/opc/mysql/84                 # 実行ファイルの存在するフォルダ
+datadir=/home/opc/mysql/data/84/data       # DBデータの格納されるフォルダ
+port=3384                                  # サーバー待ち受けポート
 mysqlx-port=33840
 socket=/tmp/my84.sock
 mysqlx-socket=/tmp/my84x.socks
 log-error=/home/opc/mysql/data/84/my.error
-local_infile=on
-enforce_gtid_consistency=on
-gtid_mode=on
-server_id=84
+local_infile=on                            # loadDumpでローカルファイルシステムからの読み込みを許可する設定
+enforce_gtid_consistency=on                # GTID整合性に違反するトランザクションを禁止する設定
+gtid_mode=on                               # GTIDを用いる設定
+server_id=84                               # サーバーごとに一意なID
+# MySQL 8.0 以上ではバイナリログ出力がデフォルトのため、log_bin=on は不要
 ```
 
 MySQL 8.4 の起動後は、`./scripts/84/connectDB.sh`で接続、`./scripts/84/stopDB.sh`で停止、`./scripts/84/startDB.sh`で起動できます。
