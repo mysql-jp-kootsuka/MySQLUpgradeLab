@@ -17,9 +17,9 @@ MySQL 設定ファイルの内容 `./configs/my57.cnf`:
 * my57.cnf
 ```
 [mysqld]
-basedir=/home/opc/mysql/57
-datadir=/home/opc/mysql/data/57/data
-port=3357
+basedir=/home/opc/mysql/57                 # 実行ファイルの存在するフォルダ
+datadir=/home/opc/mysql/data/57/data       # DBデータの格納されるフォルダ
+port=3357                                  # サーバー待ち受けポート
 socket=/tmp/my57.sock
 log-error=/home/opc/mysql/data/57/my.error
 ```
@@ -82,17 +82,18 @@ MySQL 設定ファイルの内容 `./configs/my80.cnf`:
 * my80.cnf
 ```
 [mysqld]
-basedir=/home/opc/mysql/80
-datadir=/home/opc/mysql/data/80/data
-port=3380
+basedir=/home/opc/mysql/80                 # 実行ファイルの存在するフォルダ
+datadir=/home/opc/mysql/data/80/data       # DBデータの格納されるフォルダ
+port=3380                                  # サーバー待ち受けポート
 mysqlx-port=33800
 socket=/tmp/my80.sock
 mysqlx-socket=/tmp/my80x.socks
 log-error=/home/opc/mysql/data/80/my.error
-local_infile=on
-enforce_gtid_consistency=on
-gtid_mode=on
-server_id=80
+local_infile=on                            # loadDumpでローカルファイルシステムからの読み込みを許可する設定
+enforce_gtid_consistency=on                # GTID整合性に違反するトランザクションを禁止する設定
+gtid_mode=on                               # GTIDを用いる設定
+server_id=80                               # サーバーごとに一意なID
+# MySQL 8.0 以上ではバイナリログ出力がデフォルトのため、log_bin=on は不要
 ```
 
 MySQL Server 8.0が起動しました。
