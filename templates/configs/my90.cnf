@@ -1,12 +1,13 @@
 [mysqld]
-basedir=${MYSQL_DIR}/90
-datadir=${MYSQL_DIR}/data/90/data
-port=3390
+basedir=${MYSQL_DIR}/90                 # 実行ファイルの存在するフォルダ
+datadir=${MYSQL_DIR}/data/90/data       # DBデータの格納されるフォルダ
+port=3390                               # サーバー待ち受けポート
 mysqlx-port=33900
 socket=/tmp/my90.sock
 mysqlx-socket=/tmp/my90x.socks
 log-error=${MYSQL_DIR}/data/90/my.error
-local_infile=on
-enforce_gtid_consistency=on
-gtid_mode=on
-server_id=90
+local_infile=on                         # loadDumpでローカルファイルシステムからの読み込みを許可する設定
+enforce_gtid_consistency=on             # GTID整合性に違反するトランザクションを禁止する設定
+gtid_mode=on                            # GTIDを用いる設定
+server_id=90                            # サーバーごとに一意なID
+# MySQL 8.0 以上ではバイナリログ出力がデフォルトのため、log_bin=on は不要
