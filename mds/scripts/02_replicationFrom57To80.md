@@ -44,6 +44,7 @@ Errors 項目がないかを確認してください。Notices, Warnings のみ�
 
 MySQL Server 5.7 でGTID (グローバルトランザクション識別子) を有効化し、バイナリログを出力するようにします。  
 GTIDがオンになっていると、レプリケーション設定時に、SOURCE_AUTO_POSITIONオプションでトランザクションの場所が自動指定できます。  
+(GTID に関する情報は[こちら](https://dev.mysql.com/doc/refman/8.4/en/replication-gtids-concepts.html))  
 まず、現在のGTIDの設定 (gtid_mode) がオフであることを確認します。
 
 実行するスクリプト `./scripts/57/checkGTIDVar.sh`:
@@ -96,6 +97,7 @@ GTID を有効にして MySQL Server 5.7 を再起動し、再度、`./scripts/5
 gtid_modeがオンになっていることを確認してください。
 
 ## 02-03: MySQL Server 5.7 から MySQL Shell 8.0 でデータダンプを実施
+(インスタンスダンプユーティリティに関する情報は[こちら](https://dev.mysql.com/doc/mysql-shell/8.4/en/mysql-shell-utilities-dump-instance-schema.html))
 
 実行するスクリプト `./scripts/57/dumpData.sh`:
 
@@ -140,6 +142,7 @@ Average compressed throughput: 91.66 KB/s
 ```
 
 ## 02-04: MySQL Server 8.0 に MySQL Shell 8.0 で接続し、5.7 のデータダンプをロード
+(ダンプロードユーティリティに関する情報は[こちら](https://dev.mysql.com/doc/mysql-shell/8.4/en/mysql-shell-utilities-load-dump.html))
 
 実行するスクリプト `./scripts/80/loadDumpFrom57.sh`:
 
