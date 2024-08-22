@@ -1,6 +1,6 @@
 [mysqld]
-basedir=${MYSQL_DIR}/57
-datadir=${MYSQL_DIR}/data/57/data
-port=3357
+basedir=${MYSQL_DIR}/57                 # 実行ファイルの存在するフォルダ
+datadir=${MYSQL_DIR}/data/57/data       # DBデータの格納されるフォルダ
+port=3357                               # サーバー待ち受けポート
 socket=/tmp/my57.sock
 log-error=${MYSQL_DIR}/data/57/my.error
