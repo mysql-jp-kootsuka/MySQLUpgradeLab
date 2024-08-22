@@ -76,15 +76,15 @@ MySQL 設定ファイルの内容 `./configs/my57_gtid.cnf`:
 * my57_gtid.cnf
 ```
 [mysqld]
-basedir=/home/opc/mysql/57
-datadir=/home/opc/mysql/data/57/data
-port=3357
+basedir=/home/opc/mysql/57                 # 実行ファイルの存在するフォルダ
+datadir=/home/opc/mysql/data/57/data       # DBデータの格納されるフォルダ
+port=3357                                  # サーバー待ち受けポート
 socket=/tmp/my57.sock
 log-error=/home/opc/mysql/data/57/my.error
-enforce_gtid_consistency=on
-gtid_mode=on
-log_bin=on
-server_id=57
+enforce_gtid_consistency=on                # GTID整合性に違反するトランザクションを禁止する設定
+gtid_mode=on                               # GTIDを用いる設定
+log_bin=on                                 # バイナリログを出力する設定
+server_id=57                               # サーバーごとに一意なID
 ```
 
 | Variable_name | Value |
