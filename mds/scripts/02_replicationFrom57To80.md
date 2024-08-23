@@ -1,5 +1,7 @@
 # ハンズオン手順2: MySQL Server 5.7 から 8.0 への、データのダンプ/ロードとレプリケーションを通じたアップグレード
 
+`/home/opc/mysql`の下で、`./scripts/handson/02_replicationFrom57To80.sh`を実行してください。
+
 ## 02-01: MySQL Server 5.7 から 8.0 へのアップグレードの適合性をチェック
 
 MySQL Shell 8.0 を用いて、アップグレードチェッカーを実行します。  
