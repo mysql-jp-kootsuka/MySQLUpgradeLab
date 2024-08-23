@@ -1,5 +1,7 @@
 # ハンズオン手順3: MySQL Server 8.0 から 8.4 への、CLONEプラグインとインプレースアップグレードのテスト
 
+`/home/opc/mysql`の下で、`./scripts/handson/03_replicationFrom80To84.sh`を実行してください。
+
 ## 02-01: MySQL Server 8.0 から 8.4 へのアップグレードの適合性をチェック
 
 MySQL Shell 8.4 を用いて、アップグレードチェッカーを実行します。
