@@ -1,5 +1,7 @@
 # ハンズオン手順1: MySQL Server アップグレードハンズオンの環境準備を行う
 
+`/home/opc/mysql`の下で、`./scripts/handson/01_initForHandsOn.sh`を実行してください。
+
 ## 01-01: MySQL Server 5.7 の初期化と起動
 
 実行するスクリプト `./scripts/57/initDB.sh`:
