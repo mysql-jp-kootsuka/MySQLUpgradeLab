@@ -3,7 +3,7 @@
 これはMySQL 5.7から8.4までのアップグレードを経験するラボのページです。  
 This is the Lab exercise about upgrading MySQL from 5.7 to 8.4.
 
-## [環境構築](./extractScripts/extractEnv.md)
+## [環境構築](./mds/extractEnv.md)
 
 [ハンズオンワークショップ](https://eventreg.oracle.com/profile/web/index.cfm?PKwebID=0x883786abcd&source=DEVT240718P00002:ex:pev:::::&SC=:ex:pev:::::&pcode=DEVT240718P00002)では、環境構築済みのOCI (Oracle Cloud Inflastructure) コンピュート環境を提供します。  
 その場合、提供するコンピュート環境では、既に環境構築されていますので、次に進み環境を確認してください。  
