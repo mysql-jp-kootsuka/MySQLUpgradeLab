@@ -1,8 +1,11 @@
 # ハンズオン手順2: MySQL Server 5.7 から 8.0 への、データのダンプ/ロードとレプリケーションを通じたアップグレード
 
+`/home/opc/mysql`の下で、`./scripts/handson/02_replicationFrom57To80.sh`を実行してください。
+
 ## 02-01: MySQL Server 5.7 から 8.0 へのアップグレードの適合性をチェック
 
-MySQL Shell 8.0 を用いて、アップグレードチェッカーを実行します。
+MySQL Shell 8.0 を用いて、アップグレードチェッカーを実行します。  
+(アップグレードチェッカーに関する情報は[こちら](https://dev.mysql.com/doc/mysql-shell/8.4/en/mysql-shell-utilities-upgrade.html))
 
 実行するスクリプト `./scripts/57/checkUpgradeTo80.sh`:
 
@@ -43,6 +46,7 @@ Errors 項目がないかを確認してください。Notices, Warnings のみ�
 
 MySQL Server 5.7 でGTID (グローバルトランザクション識別子) を有効化し、バイナリログを出力するようにします。  
 GTIDがオンになっていると、レプリケーション設定時に、SOURCE_AUTO_POSITIONオプションでトランザクションの場所が自動指定できます。  
+(GTID に関する情報は[こちら](https://dev.mysql.com/doc/refman/8.4/en/replication-gtids-concepts.html))  
 まず、現在のGTIDの設定 (gtid_mode) がオフであることを確認します。
 
 実行するスクリプト `./scripts/57/checkGTIDVar.sh`:
@@ -76,15 +80,15 @@ MySQL 設定ファイルの内容 `./configs/my57_gtid.cnf`:
 * my57_gtid.cnf
 ```
 [mysqld]
-basedir=/home/opc/mysql/57
-datadir=/home/opc/mysql/data/57/data
-port=3357
+basedir=/home/opc/mysql/57                 # 実行ファイルの存在するフォルダ
+datadir=/home/opc/mysql/data/57/data       # DBデータの格納されるフォルダ
+port=3357                                  # サーバー待ち受けポート
 socket=/tmp/my57.sock
 log-error=/home/opc/mysql/data/57/my.error
-enforce_gtid_consistency=on
-gtid_mode=on
-log_bin=on
-server_id=57
+enforce_gtid_consistency=on                # GTID整合性に違反するトランザクションを禁止する設定
+gtid_mode=on                               # GTIDを用いる設定
+log_bin=on                                 # バイナリログを出力する設定
+server_id=57                               # サーバーごとに一意なID
 ```
 
 | Variable_name | Value |
@@ -95,6 +99,7 @@ GTID を有効にして MySQL Server 5.7 を再起動し、再度、`./scripts/5
 gtid_modeがオンになっていることを確認してください。
 
 ## 02-03: MySQL Server 5.7 から MySQL Shell 8.0 でデータダンプを実施
+(インスタンスダンプユーティリティに関する情報は[こちら](https://dev.mysql.com/doc/mysql-shell/8.4/en/mysql-shell-utilities-dump-instance-schema.html))
 
 実行するスクリプト `./scripts/57/dumpData.sh`:
 
@@ -139,6 +144,7 @@ Average compressed throughput: 91.66 KB/s
 ```
 
 ## 02-04: MySQL Server 8.0 に MySQL Shell 8.0 で接続し、5.7 のデータダンプをロード
+(ダンプロードユーティリティに関する情報は[こちら](https://dev.mysql.com/doc/mysql-shell/8.4/en/mysql-shell-utilities-load-dump.html))
 
 実行するスクリプト `./scripts/80/loadDumpFrom57.sh`:
 

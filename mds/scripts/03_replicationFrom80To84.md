@@ -1,5 +1,7 @@
 # ハンズオン手順3: MySQL Server 8.0 から 8.4 への、CLONEプラグインとインプレースアップグレードのテスト
 
+`/home/opc/mysql`の下で、`./scripts/handson/03_replicationFrom80To84.sh`を実行してください。
+
 ## 02-01: MySQL Server 8.0 から 8.4 へのアップグレードの適合性をチェック
 
 MySQL Shell 8.4 を用いて、アップグレードチェッカーを実行します。
@@ -43,7 +45,8 @@ Errors 項目がないかを確認してください。Notices, Warnings のみ�
 
 ## 03-02: MySQL Server 8.0 で CLONE プラグインを有効化
 
-CLONE プラグインはプラグインをまず有効にし、必要なシステム変数を設定する必要があります。
+CLONE プラグインはプラグインをまず有効にし、必要なシステム変数を設定する必要があります。  
+(CLONE プラグインに関する情報は[こちら](https://dev.mysql.com/doc/refman/8.4/en/clone-plugin.html))
 
 実行するスクリプト `./scripts/80/setupClonePlugin.sh`:
 
@@ -88,7 +91,8 @@ MySQL Server 8.0 からコピーしたデータは、MySQL Server 8.0 のデー�
 
 このアップデート形式を、インプレースアップグレードといいます。  
 インプレースアップグレードは実行ファイルを置き換えるだけであるため、手軽ですが、限られたバージョン間でしか動作しません。  
-また不具合を避けるためにも、直接元のデータに置き換えるのではなく、本ハンズオンのように CLONE データやレプリカサーバのデータを対象に行ってくださ い。
+また不具合を避けるためにも、直接元のデータに置き換えるのではなく、本ハンズオンのように CLONE データやレプリカサーバのデータを対象に行ってください。  
+(インプレースアップグレードに関する情報は[こちら](https://dev.mysql.com/doc/refman/8.4/en/upgrade-binary-package.html))
 
 実行するスクリプト `./scripts/84/startDB.sh`:
 
@@ -105,17 +109,18 @@ MySQL 設定ファイルの内容 `./configs/my84.cnf`:
 * my84.cnf
 ```
 [mysqld]
-basedir=/home/opc/mysql/84
-datadir=/home/opc/mysql/data/84/data
-port=3384
+basedir=/home/opc/mysql/84                 # 実行ファイルの存在するフォルダ
+datadir=/home/opc/mysql/data/84/data       # DBデータの格納されるフォルダ
+port=3384                                  # サーバー待ち受けポート
 mysqlx-port=33840
 socket=/tmp/my84.sock
 mysqlx-socket=/tmp/my84x.socks
 log-error=/home/opc/mysql/data/84/my.error
-local_infile=on
-enforce_gtid_consistency=on
-gtid_mode=on
-server_id=84
+local_infile=on                            # loadDumpでローカルファイルシステムからの読み込みを許可する設定
+enforce_gtid_consistency=on                # GTID整合性に違反するトランザクションを禁止する設定
+gtid_mode=on                               # GTIDを用いる設定
+server_id=84                               # サーバーごとに一意なID
+# MySQL 8.0 以上ではバイナリログ出力がデフォルトのため、log_bin=on は不要
 ```
 
 MySQL 8.4 の起動後は、`./scripts/84/connectDB.sh`で接続、`./scripts/84/stopDB.sh`で停止、`./scripts/84/startDB.sh`で起動できます。

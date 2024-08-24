@@ -1,10 +1,10 @@
 [mysqld]
-basedir=${MYSQL_DIR}/57
-datadir=${MYSQL_DIR}/data/57/data
-port=3357
+basedir=${MYSQL_DIR}/57                 # 実行ファイルの存在するフォルダ
+datadir=${MYSQL_DIR}/data/57/data       # DBデータの格納されるフォルダ
+port=3357                               # サーバー待ち受けポート
 socket=/tmp/my57.sock
 log-error=${MYSQL_DIR}/data/57/my.error
-enforce_gtid_consistency=on
-gtid_mode=on
-log_bin=on
-server_id=57
+enforce_gtid_consistency=on             # GTID整合性に違反するトランザクションを禁止する設定
+gtid_mode=on                            # GTIDを用いる設定
+log_bin=on                              # バイナリログを出力する設定
+server_id=57                            # サーバーごとに一意なID
