@@ -1,2 +1,2 @@
 
-SSO_USERNAME=kohei.otsuka@oracle.com
+SSO_USERNAME=name@oracle.com
