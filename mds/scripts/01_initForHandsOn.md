@@ -119,7 +119,7 @@ MySQL Server 8.0が起動しました。
 /home/opc/mysql/80sh/bin/mysqlsh root@localhost:3380 --sql -e"SHUTDOWN;"
 ```
 
-## 01-03: MySQL Server 5.7 にworldデータベースを読み込みます
+## 01-03: MySQL Server 5.7 にworldデータベースを読み込み
 
 実行するスクリプト `./scripts/57/loadSQL.sh`:
 
