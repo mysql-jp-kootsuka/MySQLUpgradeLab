@@ -2,7 +2,7 @@
 
 `/home/opc/mysql`の下で、`./scripts/handson/03_replicationFrom80To84.sh`を実行してください。
 
-## 02-01: MySQL Server 8.0 から 8.4 へのアップグレードの適合性をチェック
+## 03-01: MySQL Server 8.0 から 8.4 へのアップグレードの適合性をチェック
 
 MySQL Shell 8.4 を用いて、アップグレードチェッカーを実行します。
 
@@ -171,7 +171,7 @@ MySQL Server 8.4 で MySQL Server 8.0 をソースとするレプリケーショ
 /home/opc/mysql/84sh/bin/mysqlsh root@localhost:3384 --sql -e"START REPLICA USER='root' PASSWORD='';"
 ```
 
-## 02-06: レプリケーションの完成をテスト
+## 03-06: レプリケーションの完成をテスト
 
 以上でレプリケーションは完了しました。  
 レプリケーションが動作しているか確認するため、MySQL Server 8.0 でデータを更新し、MySQL Server 8.4 に更新が伝播するかを確認します。
@@ -194,7 +194,7 @@ sleep 5
 
 検索結果として `Kashiba JPN Nara 79020` が表示されれば正常に動いています。
 
-## 02-07: レプリケーション終了
+## 03-07: レプリケーション終了
 
 レプリケーションが最新の更新まで伝播すれば、アプリケーションの接続先を MySQL Server 8.0 から 8.4 に変更して、レプリケーションを終了できます。
 
