@@ -79,7 +79,7 @@ extractFile "scripts/80/stopDB.sh"
 sleep 4
 
 cat << STEP1_8
-## 01-03: MySQL Server 5.7 にworldデータベースを読み込みます
+## 01-03: MySQL Server 5.7 にworldデータベースを読み込み
 
 実行するスクリプト \`./scripts/57/loadSQL.sh\`:
 STEP1_8
