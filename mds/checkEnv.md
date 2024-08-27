@@ -9,17 +9,17 @@
 
 ### 接続例
 
-SSHでIPアドレス`123.45.67.89`に接続、秘密鍵が`~/.ssh/handson_user1.key`の場合: (ユーザ名は`opc`)
+SSHでIPアドレス`123.45.67.89`に接続、秘密鍵が`~/.ssh/upgradelab.key`の場合: (ユーザ名は`opc`)
 
 ```
-$ ssh -i ~/.ssh/handson_user1.key opc@123.45.67.89
+$ ssh -i ~/.ssh/upgradelab.key opc@123.45.67.89
 The authenticity of host '123.45.67.89 (123.45.67.89)' can't be established.
 ED25519 key fingerprint is SHA256:ABCDEFGHIJKLMNO/abcdefghijklmno/12345678910.
 This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added '123.45.67.89' (ED25519) to the list of known hosts.
 Last login: Mon Aug 19 01:33:39 2024 from 234.56.78.91
-[opc@handson-user1 ~]$
+[opc@upgradelab0 ~]$
 ```
 
 ### 注意
