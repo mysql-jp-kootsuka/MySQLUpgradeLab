@@ -40,7 +40,7 @@ MySQL Server と MySQL Shell の各バージョン (5.7、8.0、8.4、9.0) の�
 
 #### ./extractScripts/01-dbDL_EE.sh (派生スクリプト)
 
-`01-dbDL_CE.sh`は、Community Editionで環境を構築しますが、同梱の`01-dbDL_CE.sh`を実行すると、Enterprise Editionで構築できます。
+`01-dbDL_CE.sh`は、Community Editionで環境を構築しますが、同梱の`01-dbDL_EE.sh`を実行すると、Enterprise Editionで構築できます。
 ただし、Enterprise Editionはダウンロード権限を持っているユーザしか取得できないため、このスクリプトのみ、各バイナリをダウンロードするための Oracle アカウントを聞かれます。
 その際は、Oracle のアカウント（メールアドレス）とパスワードを入力してください。
 
