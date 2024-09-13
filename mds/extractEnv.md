@@ -19,13 +19,13 @@ git clone https://github.com/mysql-jp-kootsuka/MySQLUpgradeLab.git
 
 実行する設定スクリプトは、
 
-1. `./extractScripts/01-dbDL.sh`
+1. `./extractScripts/01-dbDL_CE.sh`
 2. `./extractScripts/02-sqlDL.sh`
 3. `./extractScripts/03-extract.sh`
 
 の3つあり、これを順に実行すると、ハンズオン環境が構築されます。
 
-### ./extractScripts/01-dbDL.sh
+### ./extractScripts/01-dbDL_CE.sh
 
 MySQL Server と MySQL Shell の各バージョン (5.7、8.0、8.4、9.0) のバイナリをダウンロードし、配置します。  
 実行すると、以下のフォルダとその下に各バイナリを展開します。
@@ -38,7 +38,11 @@ MySQL Server と MySQL Shell の各バージョン (5.7、8.0、8.4、9.0) の�
 * `$PROJECT_DIR/mysql/90`
 * `$PROJECT_DIR/mysql/90sh`
 
-このスクリプトのみ、各バイナリをダウンロードするための Oracle アカウントを聞かれますので、Oracle のアカウント（メールアドレス）とパスワードを入力してください。
+#### ./extractScripts/01-dbDL_EE.sh (派生スクリプト)
+
+`01-dbDL_CE.sh`は、Community Editionで環境を構築しますが、同梱の`01-dbDL_CE.sh`を実行すると、Enterprise Editionで構築できます。
+ただし、Enterprise Editionはダウンロード権限を持っているユーザしか取得できないため、このスクリプトのみ、各バイナリをダウンロードするための Oracle アカウントを聞かれます。
+その際は、Oracle のアカウント（メールアドレス）とパスワードを入力してください。
 
 ### ./extractScripts/02-sqlDL.sh
 
@@ -80,5 +84,5 @@ SSO_USERNAME=name@oracle.com
 
 #### SSO_USERNAME
 
-`01-dbDL.sh`を動作させるときの、Oracle アカウントを事前設定しておきます。  
+`01-dbDL_EE.sh`を動作させるときの、Oracle アカウントを事前設定しておきます。  
 パスワードは保存しませんので、パスワードは都度入力が必要です。
