@@ -1,6 +1,6 @@
 # 環境確認
 
-[環境構築](./extractScripts/extractEnv.md)で構築される環境([ハンズオンワークショップ](https://eventreg.oracle.com/profile/web/index.cfm?PKwebID=0x883786abcd&source=DEVT240718P00002:ex:pev:::::&SC=:ex:pev:::::&pcode=DEVT240718P00002)の場合は提供されるコンピュートインスタンス)は、以下のような構成になっています。
+[環境構築](./extractEnv.md)で構築される環境([ハンズオンワークショップ](https://eventreg.oracle.com/profile/web/index.cfm?PKwebID=0x883786abcd&source=DEVT240718P00002:ex:pev:::::&SC=:ex:pev:::::&pcode=DEVT240718P00002)の場合は提供されるコンピュートインスタンス)は、以下のような構成になっています。
 
 ## 接続
 
